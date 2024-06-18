@@ -1,0 +1,994 @@
+/* general */
+:root {
+    --font-family: "Formular", sans-serif;
+    --content-width: 1536px;
+    --container-offset: 15px;
+    --main-color: #111827;
+    --light-color: #f9fafb;
+    --purple-color: #a78bfA;
+    --purple-dark-color: #8b5cf6;
+    --gray-color: #e5e7eb;
+    --gray-light-color: #9ca3af;
+    --black-color: #000;
+    --active-color: #6d28d9;
+    --disabled-color: #ddd6fe;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Formular';
+    src: url('../fonts/FormularRegular.woff2');
+}
+
+body {
+    font-family: var(--font-family);
+    min-width: 577px;
+}
+
+main {
+    background-color: var(--gray-color);
+}
+
+footer {
+    background-color: var(--main-color);
+}
+
+.container {
+    max-width: 1570px;
+    /* min-width: 576px 500px; */
+    min-width: 577px;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+header .nav-link, header .nav-link:focus {
+    color: black;
+    transition-property: color;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+}
+
+footer .nav-link, footer .nav-link:focus {
+    color: white;
+    transition-property: color;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+}
+
+.nav .nav-link:hover {
+    color: var(--purple-color);
+}
+
+.btn {
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+}
+
+    .btn:hover, .btn:active {
+        background-color: var(--purple-color);
+    }
+
+/* header */
+.md-row-head {
+    display: none;
+}
+
+.zaklad {
+    display: none;
+}
+
+header {
+    padding: 24px 0;
+}
+
+.logogo {
+    transition-property: color;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+}
+
+    .logogo:hover {
+        color: var(--purple-color);
+    }
+
+.nav a {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.border-left {
+    border-right: 1px solid var(--purple-dark-color);
+}
+
+.nav-row {
+    margin-top: 30px;
+    align-items: center;
+}
+
+header .delivery-pagh {
+    display: inline;
+    font-weight: bold;
+}
+
+.col-xxl-10 {
+    padding: 0;
+}
+
+.col-xxl-2 {
+    padding: 0;
+}
+
+.telefon {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 40px;
+    margin: 0;
+}
+
+.telefon2 {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 32px;
+}
+
+/* .nav-row{
+    border-top: 1px solid var(--purple-dark-color);
+    border-bottom: 1px solid var(--purple-dark-color);
+    padding: 20px 0px;
+} */
+
+.btn {
+    background-color: var(--purple-dark-color);
+    border: var(--purple-dark-color);
+}
+
+section .container {
+    padding: 36px 15px;
+}
+
+.head-btn {
+    padding: 12px 27px;
+}
+
+
+/* hero section */
+.hero-section {
+    padding-top: 36px;
+}
+
+.hero-h2-title {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 40px;
+    margin: 0;
+    margin-bottom: 16px;
+    color: var(--black-color);
+    padding-right: 35px;
+}
+
+.hero-p {
+    margin-bottom: 32px;
+}
+
+/* form calcult */
+.row-form-p {
+    padding: 0 120px;
+}
+
+.calcult .btn {
+    padding: 10px 20px;
+}
+
+.form-p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.calcult {
+    background-color: white;
+    margin: auto 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+    .calcult h2 {
+        font-size: 30px;
+        font-weight: 600;
+        color: var(--black-color);
+        margin-top: 15px;
+    }
+
+    .calcult .row {
+        margin: 13px 25px;
+        text-align: center;
+    }
+
+
+.mb-4 input {
+    border: 2px solid var(--main-color);
+    border-radius: 4px;
+    padding: 12px;
+}
+
+    .mb-4 input:hover, .mb-4 input:focus {
+        border: 2px solid var(--purple-dark-color);
+    }
+
+textarea:hover, textarea:focus {
+    border: 2px solid var(--purple-dark-color);
+}
+
+/* benefits section */
+.benefits-image {
+    min-width: 125px;
+}
+
+.benefits-div-h2 {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+    .benefits-div-h2 h2 {
+        font-weight: 900;
+    }
+
+.benefit {
+    padding: 24px;
+}
+
+    .benefit .row .col-9 {
+        padding-left: 40px;
+        padding-right: 50px;
+    }
+
+        .benefit .row .col-9 h3 {
+            font-size: 24px;
+            font-weight: 900;
+            line-height: 32px;
+            margin: 0;
+            margin-bottom: 12px;
+            color: var(--black-color);
+        }
+
+        .benefit .row .col-9 p {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            margin: 0;
+            color: var(--black-color);
+        }
+
+    .benefit .row .col-9 {
+        margin: auto 0;
+    }
+
+/* quality section */
+.quality p {
+    text-align: center;
+}
+
+.quality-item p {
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 28px;
+    margin: 0;
+}
+
+.btn-quality {
+    background-color: var(--purple-dark-color);
+    border: var(--purple-dark-color);
+    padding: 16px 0;
+}
+
+.quality .col-btn-quality {
+    margin-top: 36px;
+    width: 320px;
+}
+
+    .quality .col-btn-quality span {
+        font-weight: 900;
+    }
+
+.benefits-div-h2 .col-par {
+    width: 756px;
+    padding: 0 0;
+}
+
+/* reviews section */
+.reviews-div-h2 {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+    .reviews-div-h2 h2 {
+        font-size: 30px;
+        font-weight: 900;
+    }
+
+.carousel .container .row {
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.card {
+    box-sizing: border-box;
+    background-color: white;
+    margin: 0 auto;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.carousel-control-next img {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: invert(15%) sepia(74%) saturate(5766%) hue-rotate(264deg) brightness(88%) contrast(91%);
+    width: 60px;
+}
+
+.carousel-control-prev img {
+    filter: invert(15%) sepia(74%) saturate(5766%) hue-rotate(264deg) brightness(88%) contrast(91%);
+    width: 60px;
+}
+
+.quotes {
+    opacity: 0.15;
+    filter: invert(16%) sepia(94%) saturate(7498%) hue-rotate(267deg) brightness(91%) contrast(85%);
+}
+
+.card-body-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* questions section */
+.questions .container {
+    background-color: white;
+    margin: auto 0;
+    padding: 36px 0;
+}
+
+.questions-message {
+    border: 2px solid var(--main-color);
+    border-radius: 4px;
+    padding: 12px;
+}
+
+.questions {
+    padding: 72px 0;
+}
+
+/* footer */
+footer {
+    padding: 40px 0;
+}
+
+    footer .delivery-pagh {
+        display: inline;
+        font-weight: bold;
+    }
+
+    footer .smile {
+        filter: invert(1);
+        width: 16px;
+    }
+
+.footer-bot p {
+    color: rgb(75, 85, 99);
+}
+
+.autor a, .autor p {
+    color: rgb(107, 114, 128);
+}
+
+.footer-bot {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 16px;
+    margin: 0;
+}
+
+.white-row {
+    margin-bottom: 24px;
+}
+
+    .white-row p, .white-row a, .white-row h2, .white-row h5 {
+        color: white;
+    }
+
+footer nav {
+    justify-content: center;
+    text-align: center;
+    margin-right: 100px;
+}
+
+.white-row-logo .smile-text {
+    font-size: 12px;
+    font-weight: 400;
+    height: 16px;
+    line-height: 16px;
+}
+
+.footer-telefon {
+    padding: 0 0;
+}
+
+    .footer-telefon .row {
+        justify-content: end;
+        text-align: center;
+    }
+
+.autor {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    padding-left: 150px;
+}
+
+    .autor p {
+        padding-left: 20px;
+    }
+
+.end-row {
+    display: flex;
+    justify-content: flex-start;
+}
+/* media */
+/*@include media-breakpoint-only(xxl) { ... } maket: 1536 -- max --> xxl*/
+@media (min-width: 1400px) {
+
+    /* header */
+    .nav-row .col-xxl-2 {
+        padding-left: 50px;
+    }
+    /* calcult forms */
+    .calcult form {
+        width: 496px;
+    }
+    /* reviews */
+    .carousel .container .row {
+        max-width: 1230px;
+    }
+
+    .card {
+        width: 570px;
+        padding: 32px 43px;
+        min-height: 450px;
+    }
+
+    .card-text {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 32px;
+    }
+
+    .card-link {
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 32px;
+        color: var(--active-color);
+    }
+
+    .quotes {
+        width: 75px;
+    }
+
+    /* footer */
+    .white-row {
+        width: 1400 px;
+    }
+
+    footer .container {
+        width: 1390px;
+        padding: 0 5px;
+    }
+
+    .end-row {
+        width: 1395px;
+    }
+}
+
+
+/* @include media-breakpoint-only(lg) { ... } maket: 1025 -- 1535 --> lg*/
+@media (min-width: 992px) and (max-width: 1399.98px) {
+    /* general */
+
+    .container {
+        width: 1024px;
+    }
+    /* header */
+    .col-head-btn {
+        margin-left: 50px;
+    }
+
+    .hero-h2-title {
+        font-size: 30px;
+    }
+    /* calcult */
+    .calcult {
+        width: 994px;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+        /* calcult forms */
+        .calcult form {
+            width: 600px;
+        }
+
+    .questions .calcult form {
+        width: 410px;
+    }
+    /* quality */
+    .quality-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 25px;
+        width: 460px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .quality-items {
+        justify-content: center;
+    }
+
+    .quality-item p {
+        margin: 0 auto;
+    }
+
+    .quality .col-btn-quality {
+        margin-top: 5px;
+    }
+
+    /* reviews */
+    .carousel .container .row {
+        max-width: 800px;
+    }
+
+    .card {
+        width: 350px;
+        padding: 5px 5px;
+        min-height: 370px;
+    }
+
+    .card-text {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 28px;
+    }
+
+    .card-link {
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 28px;
+        color: var(--active-color);
+    }
+
+    .quotes {
+        width: 60px;
+    }
+    /* questions section */
+    .questions .calcult {
+        margin-top: 0;
+    }
+
+    /* footer */
+    .white-row {
+        width: 1050px;
+    }
+
+    footer .container {
+        width: 1050px;
+        padding: 0 5px;
+    }
+
+    .end-row {
+        width: 1075px;
+    }
+
+    footer .nav {
+        margin: 0 0;
+    }
+
+    .telefon {
+        font-size: 30px;
+        line-height: 32px;
+    }
+
+    .telefon2 {
+        font-size: 20px;
+        line-height: 28px;
+    }
+}
+
+
+/* @include media-breakpoint-only(md) { ... } maket: 759 -- 1024 --> md*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .container {
+        width: 740px;
+    }
+
+    .border-left {
+        display: none;
+    }
+
+    /* header */
+    .hero-h2-title {
+        font-size: 30px;
+    }
+
+    .nav-row {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        border-top: 1.6px solid var(--purple-dark-color);
+        border-bottom: 1.6px solid var(--purple-dark-color);
+    }
+
+    .md-row-head {
+        display: flex;
+        margin: 12px 0;
+    }
+
+        .md-row-head p {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+        }
+
+    /* calcult */
+    .calcult {
+        width: 738px;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+    /* calcult forms */
+    .row-form-p {
+        padding: 0 0;
+    }
+
+    .calcult form {
+        width: 580px;
+    }
+
+    .questions .calcult form {
+        width: 410px;
+    }
+    /* benefits */
+    .benefit .row .col-9 h3 {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .benefit .row .col-9 p {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0;
+        color: var(--black-color);
+    }
+
+    .benefit .row {
+        width: 400px;
+        justify-content: space-between;
+    }
+    /* quality */
+    .quality-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .quality-items {
+        justify-content: center;
+    }
+
+    .quality-item p {
+        margin: 0 auto;
+    }
+
+    .quality .col-btn-quality {
+        margin-top: 5px;
+    }
+    /* reviews */
+    .carousel .container .row {
+        max-width: 650px;
+    }
+
+    .card {
+        width: 550px;
+        padding: 5px 20px;
+        min-height: 280px;
+        margin-left: -140px;
+    }
+
+    .card-text {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 28px;
+    }
+
+    .card-link {
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 28px;
+        color: var(--active-color);
+    }
+
+    .quotes {
+        width: 60px;
+    }
+
+    .carousel-item .row .col-6:nth-child(2) {
+        display: none;
+    }
+
+    /* questions */
+    .questions .calcult {
+        margin-top: 0;
+    }
+    /* footer */
+    .white-row {
+        width: 740px;
+    }
+
+    .end-row {
+        width: 740px;
+    }
+
+    footer .nav {
+        margin: 0 0;
+    }
+
+    .telefon {
+        font-size: 30px;
+        line-height: 32px;
+    }
+
+    .telefon2 {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .footer-nav {
+        order: -1;
+    }
+
+    .end-row {
+        flex-direction: column;
+    }
+
+        .end-row p {
+            display: inline;
+        }
+}
+
+
+/* @include media-breakpoint-only(sm) { ... } maket: 591 -- 758 --> sm*/
+@media (min-width: 499px) and (max-width: 767.98px) {
+    .container {
+        width: 610px;
+    }
+
+    .border-left {
+        display: none;
+    }
+
+    /* header */
+    .hero-h2-title {
+        font-size: 28px;
+    }
+
+    header .col-xs-6 {
+        width: 260px;
+    }
+
+    .logogo {
+        font-size: 20px;
+    }
+
+    header img {
+        width: 40px;
+    }
+
+    .nav-row {
+        display: none;
+    }
+
+    .telefon22 {
+        display: none;
+    }
+
+    .telefon {
+        font-size: 20px;
+        line-height: 22px;
+    }
+
+    .first-row {
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .zaklad {
+        display: inline;
+        width: 30px;
+        margin-left: 10px;
+    }
+
+    header h2 {
+        display: inline;
+    }
+    /* calcult */
+    .calcult {
+        width: 610px;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+    /* calcult forms */
+    .row-form-p {
+        padding: 0 0;
+    }
+
+    .calcult form {
+        width: 580px;
+    }
+
+    .questions .calcult form {
+        width: 410px;
+    }
+    /* benefits */
+    .benefit .row .col-9 h3 {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .benefit .row .col-9 p {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0;
+        color: var(--black-color);
+    }
+
+    .benefit .row {
+        width: 400px;
+        justify-content: space-between;
+        margin: 0 auto
+    }
+    /* quality */
+    .quality-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .quality-items {
+        justify-content: center;
+    }
+
+    .quality-item p {
+        margin: 0 auto;
+    }
+
+    .quality .col-btn-quality {
+        margin-top: 5px;
+    }
+    /* reviews */
+    .carousel .container .row {
+        max-width: 400px;
+    }
+
+    .card {
+        width: 400px;
+        padding: 5px 20px;
+        min-height: 340px;
+        margin-left: -120px;
+    }
+
+    .card-text {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 28px;
+    }
+
+    .card-link {
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 28px;
+        color: var(--active-color);
+    }
+
+    .quotes {
+        width: 60px;
+    }
+
+    .carousel-item .row .col-6:nth-child(2) {
+        display: none;
+    }
+
+    /* questions */
+    .questions .calcult {
+        margin-top: 0;
+    }
+    /* footer */
+    .white-row {
+        width: 580px;
+    }
+
+    .end-row {
+        width: 580px;
+    }
+
+    footer .nav {
+        margin: 0 0;
+    }
+
+    .footer-nav {
+        order: -2;
+    }
+
+    .footer-telefon {
+        order: -1;
+    }
+
+    .footer-logo {
+        order: 1;
+        margin: 10px auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .end-row {
+        flex-direction: column;
+    }
+
+        .end-row p {
+            display: inline;
+        }
+
+    .autor {
+        padding: 0 0;
+    }
+
+    .white-row .nav-link p {
+        font-size: 24px;
+    }
+
+    .smile {
+        display: none;
+    }
+
+    .smile-text {
+        text-align: center;
+    }
+
+    .footer-logo .nav-link {
+        text-align: center;
+    }
+}
+
+
+/* @include media-breakpoint-only(xs) { ... } maket: 500 -- 590 --> xs*/
+/* @media (max-width: 575.98px) {
+
+
+  } */
+
+
+

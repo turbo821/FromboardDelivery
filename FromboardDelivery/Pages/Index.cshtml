@@ -1,0 +1,374 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Доставка вещей из-за рубежа";
+}
+
+@section Header{
+    <header>
+        <div class="container">
+            <div class="row first-row">
+                <div class="col-xxl-5 col-lg-4 col-md-6 col-xs-6"><a class="nav-link" href=""><img src="img/logotipe.png"><p class="h4 delivery-pagh logogo text-nowrap"><strong>FromBoard Delivery</strong></p></a></div>
+                <div class="col-xxl-4 col-lg-4 col-xs-1 border-left">
+                    <p class="text-end text-wrap">Доставляем товары из заграницы в Россию<br>Стоимость от 550 рублей за заказ<br>1 $ = 93 ₽ | 1 € = 99 ₽ | 1 ¥ = 13 ₽</p>
+                </div>
+                <div class="col-xxl-3 col-lg-4 col-md-6 col-telefon col-xs-6"><h2 class="text-nowrap telefon">+7 (800-12) 3-45-67</h2><img class="zaklad" src="img/mini-icon/Burger.svg" alt="burger"><h5 class="text-nowrap telefon2 telefon22">Звонки по России бесплатны</h5></div>
+            </div>
+            <div class="row nav-row">
+                <div class="col-xxl-10 col-lg-9 col-md-9">
+                    <nav class="nav">
+                        <a class="nav-link" href="#">Калькулятор</a>
+                        <a class="nav-link" href="#">О нас</a>
+                        <a class="nav-link" href="#">Гарантии</a>
+                        <a class="nav-link" href="#">Отзывы</a>
+                    </nav>
+                </div>
+                <div class="col-xxl-2 col-lg-1 col-md-1 col-head-btn">
+                    <button class="btn btn-primary text-nowrap head-btn" type="submit">Оставить заявку</button>
+                </div>
+            </div>
+            <div class="row md-row-head">
+                <p class="col-4 text-center">Доставляем товары из заграницы в Россию</p>
+                <p class="col-3 text-center">Стоимость от 550 рублей за заказ</p>
+                <p class="col-5 text-center">1 $ = 93 ₽ | 1 € = 99 ₽ | 1 ¥ = 13 ₽</p>
+            </div>
+        </div>
+    </header>
+}
+
+@section Main{
+    <main>
+
+        <!-- hero-calcult section -->
+        <section class="hero-section">        
+            <div class="container">
+                <div class="row">
+                    <div class="col-xxl-6 col-lg-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-xxl-12 col-lg-6 col-xs-12">
+                                <h2 class="hero-h2-title">Без проблемная доставка купленных вещей из США, Европы и Азии в Россию</h2>
+                                <p class="fs-5 hero-p">Сэкономьте на покупках и наслаждайтесь мировыми брендами — наш сервис позволяет вам легко и удобно заказывать товары со всего мира и получать их в России</p>
+                            </div>
+                            <div class="col-xxl-12 col-lg-6 col-xs-12">
+                                <img alt="box" class="img-fluid align-self-center" src="img/hero.png"> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-6 col-lg-12  col-xs-12 calcult rounded-4">
+                        <div class="row">
+                            <h2>Калькулятор доставки</h2>
+                        </div>
+                        <div class="row row-form-p">
+                            <p class="form-p">Посчитайте, сколько будет стоить перевозка покупки из зарубежа</p>
+                        </div>
+                        <form class="row mx-auto">
+                            <div class="col-12 mb-4">
+                                <label for="inputName" class="visually-hidden">Имя</label>
+                                <input type="text" class="form-control" id="inputName" placeholder="Имя" required>
+                            </div>
+                            <div class="col-6 mb-4 align-self-center">
+                                <label for="inputEmail" class="visually-hidden">Почта</label>
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Почта" required>
+                            </div>
+                            <div class="col-6 mb-4">
+                                <label for="inputNumber" class="visually-hidden">Телефон</label>
+                                <input type="number" class="form-control" id="inputNumber" placeholder="Телефон" required>
+                            </div>
+                            <div class="col-6 mb-4">
+                                <label for="inputSquare" class="visually-hidden">Общая площадь</label>
+                                <input type="text" class="form-control" id="inputSquare" placeholder="Общая площадь, м^2" required>
+                            </div>
+                            <div class="col-6 mb-4">
+                                <label for="inputWeight" class="visually-hidden">Вес</label>
+                                <input type="text" class="form-control" id="inputWeight" placeholder="Вес, кг" required>
+                            </div>
+                            <div class="col-6 mb-4">
+                                <label for="inputCountryBuy" class="visually-hidden">Страна покупки</label>
+                                <input type="text" class="form-control" id="inputCountryBuy" placeholder="Страна покупки" required>
+                            </div>
+                            <div class="col-6 mb-4">
+                                <label for="inputCityBuy" class="visually-hidden">Город покупки</label>
+                                <input type="text" class="form-control" id="inputCityBuy" placeholder="Город покупки" required>
+                            </div>
+                            <div class="col-6 mb-4">
+                                <label for="inputRegionDelivery" class="visually-hidden">Область доставки</label>
+                                <input type="text" class="form-control" id="inputRegionDelivery" placeholder="Область доставки" required>
+                            </div>
+                            <div class="col-6 mb-4">
+                                <label for="inputCityDelivery" class="visually-hidden">Город доставки</label>
+                                <input type="text" class="form-control" id="inputCityDelivery" placeholder="Город доставки" required>
+                            </div>
+                            <div class="col-12 mb-3 d-grid">
+                                <button type="submit" class="btn btn-primary mb-3">Заказать расчёт</button>
+                            </div>
+                        </form>
+                    </div>
+                </div> 
+            </div>
+        </section>
+
+        <!-- benefits section -->
+        <section class="benefits">
+            <div class="container">
+                <div class="row benefits-div-h2">
+                    <h2>Наши преимущества</h2>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-xxl-4 benefit">
+                        <div class="row">
+                            <div class="col-3"><img class="img-fluid benefits-image" src="img/benefits/Board.svg" alt="box"></div>
+                            <div class="col-9">
+                                <h3>Растоможка груза</h3>
+                                <p>Мы берём на себя все формальности и бумажную волокиту, связанную с растаможкой груза</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-xxl-4 benefit">
+                        <div class="row">
+                            <div class="col-3"><img class="img-fluid benefits-image" src="img/benefits/Package.svg" alt="box"></div>
+                            <div class="col-9">
+                                <h3>Надёжная упаковка</h3>
+                                <p>Все товары упаковываются нашими специалистами с особым вниманием к деталям, гарантируя, что они дойдут в безопасности и в отличном состоянии</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-xxl-4 benefit">
+                        <div class="row">
+                            <div class="col-3"><img class="img-fluid benefits-image" src="img/benefits/Delivery.svg" alt="box"></div>
+                            <div class="col-9">
+                                <h3>Быстро и выгодно</h3>
+                                <p>Мы предлагаем быструю и выгодную доставку, чтобы вы могли насладиться покупками как можно скорее.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-xxl-4 benefit">
+                        <div class="row">
+                            <div class="col-3"><img class="img-fluid benefits-image" src="img/benefits/best-support.svg" alt="box"></div>
+                            <div class="col-9">
+                                <h3>Удобный сервис</h3>
+                                <p>Стремимся сделать процесс доставки максимально удобным для вас, чтобы опыт остался приятным и беззаботным</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-xxl-4 benefit">
+                        <div class="row">
+                            <div class="col-3"><img class="img-fluid benefits-image" src="img/benefits/clear-info.svg" alt="box"></div>
+                            <div class="col-9">
+                                <h3>Прозрачность работы</h3>
+                                <p>Мы предоставляем полный контроль над каждым этапом доставки, от момента заказа до момента прибытия заказа</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-xxl-4 benefit">
+                        <div class="row">
+                            <div class="col-3"><img class="img-fluid benefits-image" src="img/benefits/garantee.svg" alt="box"></div>
+                            <div class="col-9">
+                                <h3>Страхование груза</h3>
+                                <p>Наше страхование обеспечивает полную защиту и покрытие почти все неприятные и неожиданные ситуации</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </section>
+
+        <!-- quality section -->
+        <section class="quality">
+            <div class="container">
+                <div class="row  benefits-div-h2">
+                    <div class="col-12">
+                        <h2>Гарантии качества</h2>
+                    </div>
+                    <div class="col-12 d-grid mx-auto col-par">
+                        <p>Наши гарантии качества включают в себя полный спектр документов, необходимых для ввоза и вывоза товаров, а также для успешного бизнеса на мировом рынке.Мы предоставляем вам надёжность и уверенность</p>
+                    </div>
+                </div>
+                <div class="row quality-items">
+                    <div class="col-xxl-3 col-md-6 col-xs-12 quality-item">
+                        <img  class="img-fluid " src="img/certificate-russia.png" alt="image">
+                        <p>Свидетельство о регистрации в РФ</p>
+                    </div>
+                    <div class="col-xxl-3  col-md-6 col-xs-12 quality-item">
+                        <img class="img-fluid" src="img/certificate-usa.png" alt="image">
+                        <p>Свидетельство о регистрации в США</p>
+                    </div>
+                    <div class="col-xxl-3  col-md-6 col-xs-12 quality-item">
+                        <img class="img-fluid" src="img/certificate-china.png" alt="image">
+                        <p>Свидетельство о регистрации в Китае</p>
+                    </div>
+                    <div class="col-xxl-3  col-md-6 col-xs-12 quality-item">
+                        <img class="img-fluid" src="img/certificate-uk.png" alt="image">
+                        <p>Свидетельство о регистрации в Великобритнии</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-grid mx-auto col-btn-quality">
+                        <button class="btn btn-primary btn-quality text-nowrap  rounded-4" type="submit"><span>Показать больше документов</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- reviews section -->
+        <section class="reviews">
+            <div class="container">
+                <div class="row reviews-div-h2">
+                    <h2>Отзывы</h2>
+                </div>
+                <div class="row">
+                    <div id="carousel" class="carousel slide">
+
+                        <div class="carousel-inner container">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="card rounded-4">
+                                            <div class="card-body">
+                                                <p class="card-text">Я заказала последний iPhone из США через ваш сервис, и доставка прошла быстро и без каких‑либо проблем. Гарантии качества и надёжная упаковка сделали мой опыт покупки невероятно позитивным</p>
+                                                <div class="card-body-flex"><p class="card-link">Анна</p><img class="quotes" src="img/mini-icon/Quotes.svg" alt="quote"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="card rounded-4">
+                                            <div class="card-body">
+                                                <p class="card-text">Я уже несколько лет заказываю дизайнерскую одежду из Франции через ваш сервис, и он никогда меня не подводил. Важно иметь надёжную компанию, которая позаботится о вашем заказе и предоставит все необходимые документы для ввоза в Россию</p>
+                                                <div class="card-body-flex"><p class="card-link">Алексей</p><img class="quotes" src="img/mini-icon/Quotes.svg" alt="quote"></div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="card rounded-4">
+                                            <div class="card-body">
+                                              <p class="card-text">Я уже несколько лет заказываю дизайнерскую одежду из Франции через ваш сервис, и он никогда меня не подводил. Важно иметь надёжную компанию, которая позаботится о вашем заказе и предоставит все необходимые документы для ввоза в Россию</p>
+                                              <div class="card-body-flex"><p class="card-link">Ольга</p><img class="quotes" src="img/mini-icon/Quotes.svg" alt="quote"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="card rounded-4">
+                                            <div class="card-body">
+                                              <p class="card-text">Заказал шикарные часы из Швейцарии, и доставка была невероятно быстрой. Ваш сервис делает интернет-шоппинг более доступным и удобным</p>
+                                              <div class="card-body-flex"><p class="card-link">Игорь</p><img class="quotes" src="img/mini-icon/Quotes.svg" alt="quote"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="card rounded-4">
+                                            <div class="card-body">
+                                              <p class="card-text">Ваш сервис действительно изменил мой способ покупок. Я больше не переживаю о таможенных вопросах и документах — все у вас в порядке. Спасибо за ваше качество и надежность</p>
+                                              <div class="card-body-flex"><p class="card-link">Екатерина</p><img class="quotes" src="img/mini-icon/Quotes.svg" alt="quote"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="card rounded-4">
+                                            <div class="card-body">
+                                              <p class="card-text">Я заказал редкий антикварный предмет из Японии через ваш сервис, и остался впечатлен. Все пришло в отличном состоянии, и ваша гарантия качества действительно работает. Спасибо за ваше профессиональное обслуживание</p>
+                                              <div class="card-body-flex"><p class="card-link">Дмитрий</p><img class="quotes" src="img/mini-icon/Quotes.svg" alt="quote"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                            <img src="img/mini-icon/Arrow.svg" alt="">
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                            <img src="img/mini-icon/Arrow.svg" alt="">
+                            <span class="visually-hidden">Next</span>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- questions section (based calcult) -->
+        <section class="questions">
+            <div class="container mx-auto rounded-4">
+                <div class="calcult rounded-4">
+                    <div class="row">
+                        <h2>Остались вопросы?</h2>
+                    </div>
+                    <form class="row mx-auto">
+                        <div class="col-6 mb-4">
+                            <label for="inputName2" class="visually-hidden">Имя</label>
+                            <input type="text" class="form-control" id="inputName2" placeholder="Имя" required>
+                        </div>
+                        <div class="col-6 mb-4 align-self-center">
+                            <label for="inputEmail2" class="visually-hidden">Почта</label>
+                            <input type="email" class="form-control" id="inputEmail2" placeholder="Почта" required>
+                        </div>
+                        <div class="col-6 mb-4">
+                            <label for="inputNumber2" class="visually-hidden">Телефон</label>
+                            <input type="number" class="form-control" id="inputNumber2" placeholder="Телефон" required>
+                        </div>
+                        <div class="col-6 mb-4">
+                            <label for="inputSquare2" class="visually-hidden">Тема вопроса</label>
+                            <input type="text" class="form-control" id="inputSquare2" placeholder="Тема вопроса" required>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <textarea class="form-control questions-message" placeholder="Сообщение..." id="floatingTextarea2" style="height: 150px"></textarea>
+                            <label for="floatingTextarea2" class="visually-hidden">Comments</label>
+                          </div>
+                        <div class="col-12 mb-3 d-grid">
+                            <button type="submit" class="btn btn-primary mb-3">Оставить заявку</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+}
+
+@section Footer{
+    <footer>
+        <div class="container mx-auto">
+            <div class="row white-row">
+                <div class="col-xxl-4 col-lg-4 col-md-7 col-xs-12 white-row-logo align-self-center footer-logo">
+                    <a class="nav-link" href=""><img src="img/logotipe.png"><p class="h4 delivery-pagh text-nowrap"><strong>FromBoard Delivery</strong></p></a>
+                    <p class="delivery-pagh smile-text">2023 © Ни одно право не защищено, копируйте сколько влезет</p> <img class="smile" src="img/mini-icon/Quotes-1.svg" alt="smile">
+                </div>
+                <div class="col-xxl-5 col-lg-5 col-xs-12 align-self-center footer-nav">
+                    <nav class="nav">
+                        <a class="nav-link" href="#">Калькулятор</a>
+                        <a class="nav-link" href="#">О нас</a>
+                        <a class="nav-link" href="#">Гарантии</a>
+                        <a class="nav-link" href="#">Отзывы</a>
+                    </nav>
+                </div>
+                <div class="col-xxl-3 col-lg-3 col-md-5 col-xs-12 align-self-center footer-telefon">
+                    <div class="row">
+                        <h2 class="col-12 text-nowrap fw-bold telefon">+7 (800-12) 3-45-67</h2>
+                        <h5 class="col-12 text-nowrap telefon2">Звонки по России бесплатны</h5>
+                    </div>
+                </div>
+
+            </div>
+            <div class="end-row">
+                <div class=" footer-bot">
+                    <p>НЕ ЯВЛЯЕТСЯ ПУБЛИЧНОЙ ОФЕРТОЙ. Просим обратить внимание на то, что цены носят информационный и ознакомительный характер, а значит ни в какой мере не являются публичной офертой, которая определена в ст. 437 ГК РФ. Вся информация на сайте может содержать неточности, орфографические и иные ошибки, она не является полной, окончательно и исчерпывающей</p>
+                </div>
+                <div class="autor">
+                    <p class="text-nowrap">Разработкой макета занимался</p>
+                    <a class="text-nowrap" href="https://live.verstaem.online/fromboard-delivery/">StyleLifeWeb | Васильев Александр</a>
+                </div>
+            </div>
+    </footer>
+}
