@@ -4,38 +4,6 @@
     ViewData["Title"] = "Доставка вещей из-за рубежа";
 }
 
-@section Header{
-    <header>
-        <div class="container">
-            <div class="row first-row">
-                <div class="col-xxl-5 col-lg-4 col-md-6 col-xs-6"><a class="nav-link" href=""><img src="img/logotipe.png"><p class="h4 delivery-pagh logogo text-nowrap"><strong>FromBoard Delivery</strong></p></a></div>
-                <div class="col-xxl-4 col-lg-4 col-xs-1 border-left">
-                    <p class="text-end text-wrap">Доставляем товары из заграницы в Россию<br>Стоимость от 550 рублей за заказ<br>1 $ = 93 ₽ | 1 € = 99 ₽ | 1 ¥ = 13 ₽</p>
-                </div>
-                <div class="col-xxl-3 col-lg-4 col-md-6 col-telefon col-xs-6"><h2 class="text-nowrap telefon">+7 (800-12) 3-45-67</h2><img class="zaklad" src="img/mini-icon/Burger.svg" alt="burger"><h5 class="text-nowrap telefon2 telefon22">Звонки по России бесплатны</h5></div>
-            </div>
-            <div class="row nav-row">
-                <div class="col-xxl-10 col-lg-9 col-md-9">
-                    <nav class="nav">
-                        <a class="nav-link" href="#">Калькулятор</a>
-                        <a class="nav-link" href="#">О нас</a>
-                        <a class="nav-link" href="#">Гарантии</a>
-                        <a class="nav-link" href="#">Отзывы</a>
-                    </nav>
-                </div>
-                <div class="col-xxl-2 col-lg-1 col-md-1 col-head-btn">
-                    <button class="btn btn-primary text-nowrap head-btn" type="submit">Оставить заявку</button>
-                </div>
-            </div>
-            <div class="row md-row-head">
-                <p class="col-4 text-center">Доставляем товары из заграницы в Россию</p>
-                <p class="col-3 text-center">Стоимость от 550 рублей за заказ</p>
-                <p class="col-5 text-center">1 $ = 93 ₽ | 1 € = 99 ₽ | 1 ¥ = 13 ₽</p>
-            </div>
-        </div>
-    </header>
-}
-
 @section Main{
     <main>
 
@@ -54,49 +22,50 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xxl-6 col-lg-12  col-xs-12 calcult rounded-4">
+                    <div class="col-xxl-6 col-lg-12  col-xs-12 calcult rounded-4" id="calcult">
                         <div class="row">
                             <h2>Калькулятор доставки</h2>
                         </div>
                         <div class="row row-form-p">
                             <p class="form-p">Посчитайте, сколько будет стоить перевозка покупки из зарубежа</p>
                         </div>
-                        <form class="row mx-auto">
+                        <h2>@Model.Message</h2>
+                        <form class="row mx-auto" method="post" asp-antiforgery="true" asp-page-handler="Calculation">
                             <div class="col-12 mb-4">
-                                <label for="inputName" class="visually-hidden">Имя</label>
-                                <input type="text" class="form-control" id="inputName" placeholder="Имя" required>
+                                <input asp-for="Calculation.Name" class="form-control" id="inputName" placeholder="Имя" />
+                                <span asp-validation-for="Calculation.Name"/>
                             </div>
                             <div class="col-6 mb-4 align-self-center">
-                                <label for="inputEmail" class="visually-hidden">Почта</label>
-                                <input type="email" class="form-control" id="inputEmail" placeholder="Почта" required>
+                                <input asp-for="Calculation.Email" class="form-control" id="inputEmail" placeholder="Почта" />
+                                <span asp-validation-for="Calculation.Email" />
                             </div>
                             <div class="col-6 mb-4">
-                                <label for="inputNumber" class="visually-hidden">Телефон</label>
-                                <input type="number" class="form-control" id="inputNumber" placeholder="Телефон" required>
+                                <input asp-for="Calculation.PhoneNumber" class="form-control" id="inputNumber" placeholder="Телефон" />
+                                <span asp-validation-for="Calculation.PhoneNumber" />
                             </div>
                             <div class="col-6 mb-4">
-                                <label for="inputSquare" class="visually-hidden">Общая площадь</label>
-                                <input type="text" class="form-control" id="inputSquare" placeholder="Общая площадь, м^2" required>
+                                <input asp-for="Calculation.Square" type="number" class="form-control" id="inputSquare" placeholder="Общая площадь, м^2" />
+                                <span asp-validation-for="Calculation.Square" />
                             </div>
                             <div class="col-6 mb-4">
-                                <label for="inputWeight" class="visually-hidden">Вес</label>
-                                <input type="text" class="form-control" id="inputWeight" placeholder="Вес, кг" required>
+                                <input asp-for="Calculation.Weight" type="number" class="form-control" id="inputWeight" placeholder="Вес, кг" />
+                                <span asp-validation-for="Calculation.Weight" />
                             </div>
                             <div class="col-6 mb-4">
-                                <label for="inputCountryBuy" class="visually-hidden">Страна покупки</label>
-                                <input type="text" class="form-control" id="inputCountryBuy" placeholder="Страна покупки" required>
+                                <input asp-for="Calculation.BuyCountry" class="form-control" id="inputCountryBuy" placeholder="Страна покупки" />
+                                <span asp-validation-for="Calculation.BuyCountry" />
                             </div>
                             <div class="col-6 mb-4">
-                                <label for="inputCityBuy" class="visually-hidden">Город покупки</label>
-                                <input type="text" class="form-control" id="inputCityBuy" placeholder="Город покупки" required>
+                                <input asp-for="Calculation.BuyCity" class="form-control" id="inputCityBuy" placeholder="Город покупки" />
+                                <span asp-validation-for="Calculation.BuyCity" />
                             </div>
                             <div class="col-6 mb-4">
-                                <label for="inputRegionDelivery" class="visually-hidden">Область доставки</label>
-                                <input type="text" class="form-control" id="inputRegionDelivery" placeholder="Область доставки" required>
+                                <input asp-for ="Calculation.DeliveryRegion" class="form-control" id="inputRegionDelivery" placeholder="Область доставки" />
+                                <span asp-validation-for="Calculation.DeliveryRegion" />
                             </div>
                             <div class="col-6 mb-4">
-                                <label for="inputCityDelivery" class="visually-hidden">Город доставки</label>
-                                <input type="text" class="form-control" id="inputCityDelivery" placeholder="Город доставки" required>
+                                <input asp-for="Calculation.DeliveryCity" class="form-control" id="inputCityDelivery" placeholder="Город доставки" />
+                                <span asp-validation-for="Calculation.DeliveryCity" />
                             </div>
                             <div class="col-12 mb-3 d-grid">
                                 <button type="submit" class="btn btn-primary mb-3">Заказать расчёт</button>
@@ -109,7 +78,7 @@
 
         <!-- benefits section -->
         <section class="benefits">
-            <div class="container">
+            <div class="container" id="about">
                 <div class="row benefits-div-h2">
                     <h2>Наши преимущества</h2>
                 </div>
@@ -174,7 +143,7 @@
 
         <!-- quality section -->
         <section class="quality">
-            <div class="container">
+            <div class="container" id="guarantees">
                 <div class="row  benefits-div-h2">
                     <div class="col-12">
                         <h2>Гарантии качества</h2>
@@ -211,7 +180,7 @@
 
         <!-- reviews section -->
         <section class="reviews">
-            <div class="container">
+            <div class="container" id="reviews">
                 <div class="row reviews-div-h2">
                     <h2>Отзывы</h2>
                 </div>
@@ -306,69 +275,33 @@
                     <div class="row">
                         <h2>Остались вопросы?</h2>
                     </div>
-                    <form class="row mx-auto">
+                    <form class="row mx-auto" method="post" asp-antiforgery="true" asp-page-handler="Question">
                         <div class="col-6 mb-4">
-                            <label for="inputName2" class="visually-hidden">Имя</label>
-                            <input type="text" class="form-control" id="inputName2" placeholder="Имя" required>
+                            <input asp-for="Question.Name" class="form-control" id="inputName2" placeholder="Имя" />
+                            <span asp-validation-for="Question.Name" />
                         </div>
                         <div class="col-6 mb-4 align-self-center">
-                            <label for="inputEmail2" class="visually-hidden">Почта</label>
-                            <input type="email" class="form-control" id="inputEmail2" placeholder="Почта" required>
+                            <input asp-for="Question.Email" class="form-control" id="inputEmail2" placeholder="Почта" />
+                            <span asp-validation-for="Question.Email" />
                         </div>
                         <div class="col-6 mb-4">
-                            <label for="inputNumber2" class="visually-hidden">Телефон</label>
-                            <input type="number" class="form-control" id="inputNumber2" placeholder="Телефон" required>
+                            <input asp-for="Question.PhoneNumber" class="form-control" id="inputNumber2" placeholder="Телефон" />
+                            <span asp-validation-for="Question.PhoneNumber" />
                         </div>
                         <div class="col-6 mb-4">
-                            <label for="inputSquare2" class="visually-hidden">Тема вопроса</label>
-                            <input type="text" class="form-control" id="inputSquare2" placeholder="Тема вопроса" required>
+                            <input asp-for="Question.Subject" class="form-control" id="inputSquare2" placeholder="Тема вопроса" />
+                            <span asp-validation-for="Question.Subject" />
                         </div>
                         <div class="col-12 mb-4">
-                            <textarea class="form-control questions-message" placeholder="Сообщение..." id="floatingTextarea2" style="height: 150px"></textarea>
-                            <label for="floatingTextarea2" class="visually-hidden">Comments</label>
+                            <textarea asp-for="Question.Message" class="form-control questions-message" placeholder="Сообщение..." id="floatingTextarea2" style="height: 150px"></textarea>
+                            <span asp-validation-for="Question.Message" />
                           </div>
                         <div class="col-12 mb-3 d-grid">
-                            <button type="submit" class="btn btn-primary mb-3">Оставить заявку</button>
+                            <button type="submit" class="btn btn-primary mb-3" id="application">Оставить заявку</button>
                         </div>
                     </form>
                 </div>
             </div>
         </section>
     </main>
-}
-
-@section Footer{
-    <footer>
-        <div class="container mx-auto">
-            <div class="row white-row">
-                <div class="col-xxl-4 col-lg-4 col-md-7 col-xs-12 white-row-logo align-self-center footer-logo">
-                    <a class="nav-link" href=""><img src="img/logotipe.png"><p class="h4 delivery-pagh text-nowrap"><strong>FromBoard Delivery</strong></p></a>
-                    <p class="delivery-pagh smile-text">2023 © Ни одно право не защищено, копируйте сколько влезет</p> <img class="smile" src="img/mini-icon/Quotes-1.svg" alt="smile">
-                </div>
-                <div class="col-xxl-5 col-lg-5 col-xs-12 align-self-center footer-nav">
-                    <nav class="nav">
-                        <a class="nav-link" href="#">Калькулятор</a>
-                        <a class="nav-link" href="#">О нас</a>
-                        <a class="nav-link" href="#">Гарантии</a>
-                        <a class="nav-link" href="#">Отзывы</a>
-                    </nav>
-                </div>
-                <div class="col-xxl-3 col-lg-3 col-md-5 col-xs-12 align-self-center footer-telefon">
-                    <div class="row">
-                        <h2 class="col-12 text-nowrap fw-bold telefon">+7 (800-12) 3-45-67</h2>
-                        <h5 class="col-12 text-nowrap telefon2">Звонки по России бесплатны</h5>
-                    </div>
-                </div>
-
-            </div>
-            <div class="end-row">
-                <div class=" footer-bot">
-                    <p>НЕ ЯВЛЯЕТСЯ ПУБЛИЧНОЙ ОФЕРТОЙ. Просим обратить внимание на то, что цены носят информационный и ознакомительный характер, а значит ни в какой мере не являются публичной офертой, которая определена в ст. 437 ГК РФ. Вся информация на сайте может содержать неточности, орфографические и иные ошибки, она не является полной, окончательно и исчерпывающей</p>
-                </div>
-                <div class="autor">
-                    <p class="text-nowrap">Разработкой макета занимался</p>
-                    <a class="text-nowrap" href="https://live.verstaem.online/fromboard-delivery/">StyleLifeWeb | Васильев Александр</a>
-                </div>
-            </div>
-    </footer>
 }

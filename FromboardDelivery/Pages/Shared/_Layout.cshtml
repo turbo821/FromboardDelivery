@@ -1,19 +1,102 @@
 ﻿<!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-fallback-test-class="hidden" asp-fallback-test-property="visibility" asp-fallback-test-value="hidden" />
     <link href="~/css/site.css" rel="stylesheet">
     <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
 
-    @RenderSection("Header")
+    <header>
+        <div class="container">
+            <div class="row first-row">
+                <div class="col-xxl-5 col-lg-4 col-md-6 col-xs-6"><a class="nav-link" asp-page="Index"><img src="img/logotipe.png"><p class="h4 delivery-pagh logogo text-nowrap"><strong>FromBoard Delivery</strong></p></a></div>
+                <div class="col-xxl-4 col-lg-4 col-xs-1 border-left">
+                    <p class="text-end text-wrap">Доставляем товары из заграницы в Россию<br>Стоимость от 550 рублей за заказ<br>1 $ = 93 ₽ | 1 € = 99 ₽ | 1 ¥ = 13 ₽</p>
+                </div>
+                <div class="col-xxl-3 col-lg-4 col-md-6 col-telefon col-xs-6"><h2 class="text-nowrap telefon">+7 (800-12) 3-45-67</h2><img class="zaklad" src="img/mini-icon/Burger.svg" alt="burger"><h5 class="text-nowrap telefon2 telefon22">Звонки по России бесплатны</h5></div>
+            </div>
+            <div class="row nav-row">
+                <div class="col-xxl-10 col-lg-9 col-md-9">
+                    <nav class="nav">
+                        <a class="nav-link" asp-page="Index" asp-fragment="calcult">Калькулятор</a>
+                        <a class="nav-link" asp-page="Index" asp-fragment="about">О нас</a>
+                        <a class="nav-link" asp-page="Index" asp-fragment="guarantees">Гарантии</a>
+                        <a class="nav-link" asp-page="Index" asp-fragment="reviews">Отзывы</a>
+                    </nav>
+                </div>
+                <div class="col-xxl-2 col-lg-1 col-md-1 col-head-btn">
+                    <a class="btn btn-primary text-nowrap head-btn" type="submit" asp-page="Index" asp-fragment="application">Оставить заявку</a>
+                </div>
+            </div>
+            <div class="row md-row-head">
+                <p class="col-4 text-center">Доставляем товары из заграницы в Россию</p>
+                <p class="col-3 text-center">Стоимость от 550 рублей за заказ</p>
+                <p class="col-5 text-center">1 $ = 93 ₽ | 1 € = 99 ₽ | 1 ¥ = 13 ₽</p>
+            </div>
+        </div>
+    </header>
+
     @RenderSection("Main")
-    @RenderSection("Footer")
+
+    <footer>
+        <div class="container mx-auto">
+            <div class="row white-row">
+                <div class="col-xxl-4 col-lg-4 col-md-7 col-xs-12 white-row-logo align-self-center footer-logo">
+                    <a class="nav-link" href=""><img src="img/logotipe.png"><p class="h4 delivery-pagh text-nowrap"><strong>FromBoard Delivery</strong></p></a>
+                    <p class="delivery-pagh smile-text">2023 © Ни одно право не защищено, копируйте сколько влезет</p> <img class="smile" src="img/mini-icon/Quotes-1.svg" alt="smile">
+                </div>
+                <div class="col-xxl-5 col-lg-5 col-xs-12 align-self-center footer-nav">
+                    <nav class="nav">
+                        <a class="nav-link" asp-page="Index" asp-fragment="calcult">Калькулятор</a>
+                        <a class="nav-link" asp-page="Index" asp-fragment="about">О нас</a>
+                        <a class="nav-link" asp-page="Index" asp-fragment="guarantees">Гарантии</a>
+                        <a class="nav-link" asp-page="Index" asp-fragment="reviews">Отзывы</a>
+                    </nav>
+                </div>
+                <div class="col-xxl-3 col-lg-3 col-md-5 col-xs-12 align-self-center footer-telefon">
+                    <div class="row">
+                        <h2 class="col-12 text-nowrap fw-bold telefon">+7 (800-12) 3-45-67</h2>
+                        <h5 class="col-12 text-nowrap telefon2">Звонки по России бесплатны</h5>
+                    </div>
+                </div>
+
+            </div>
+            <div class="end-row">
+                <div class=" footer-bot">
+                    <p>НЕ ЯВЛЯЕТСЯ ПУБЛИЧНОЙ ОФЕРТОЙ. Просим обратить внимание на то, что цены носят информационный и ознакомительный характер, а значит ни в какой мере не являются публичной офертой, которая определена в ст. 437 ГК РФ. Вся информация на сайте может содержать неточности, орфографические и иные ошибки, она не является полной, окончательно и исчерпывающей</p>
+                </div>
+                <div class="autor">
+                    <p class="text-nowrap">Разработкой макета занимался</p>
+                    <a class="text-nowrap" href="https://live.verstaem.online/fromboard-delivery/">StyleLifeWeb | Васильев Александр</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"
+            asp-fallback-src="~/lib/jquery-validation/dist/jquery.validate.min.js">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"
+            asp-fallback-src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"
+            asp-fallback-src="~/lib/jquery.maskedinput/jquery.maskedinput.min.js">
+    </script>
+    <script type="text/javascript" src="~/js/site.js">
+    </script>
+
 </body>
 </html>

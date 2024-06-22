@@ -1,4 +1,20 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿
+$(function () {
+    $("#inputNumber").mask("+7(999)999-99-99");
+    $("#inputNumber2").mask("+7(999)999-99-99");
+});
 
-// Write your JavaScript code.
+const phone = document.getElementById("inputNumber");
+const phone2 = document.getElementById("inputNumber2");
+
+phone.addEventListener("click", function () {
+    phone.focus();
+    phone.setSelectionRange(3, 3);
+
+});
+phone2.addEventListener("click", function () {
+    phone2.focus();
+    phone2.setSelectionRange(3, 3);
+
+});
+
