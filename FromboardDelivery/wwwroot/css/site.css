@@ -446,10 +446,23 @@ footer nav {
     display: flex;
     justify-content: flex-start;
 }
+/* login */
+.login{
+    min-height: 500px;
+    width: 800px;
+}
+
+/* data */
+.data-ul{
+    background-color: white;
+}
+.data-ul .col{
+
+}
+
 /* media */
 /*@include media-breakpoint-only(xxl) { ... } maket: 1536 -- max --> xxl*/
 @media (min-width: 1400px) {
-
     /* header */
     .nav-row .col-xxl-2 {
         padding-left: 50px;
@@ -457,6 +470,12 @@ footer nav {
     /* calcult forms */
     .calcult form {
         width: 496px;
+    }
+    .login form {
+        width: 800px;
+    }
+    .login{
+        width: 900px;
     }
     /* reviews */
     .carousel .container .row {
@@ -488,7 +507,7 @@ footer nav {
 
     /* footer */
     .white-row {
-        width: 1400 px;
+        width: 1400px;
     }
 
     footer .container {

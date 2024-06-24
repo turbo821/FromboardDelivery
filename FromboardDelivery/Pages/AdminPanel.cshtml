@@ -1,46 +1,79 @@
 ﻿@page
 @model FromboardDelivery.Pages.AdminPanelModel
 @{
-    ViewData["Title"] = "Просмотр запросов";
+    ViewData["Title"] = "Панель администратора";
+}
+
+@section HeaderButton {
+    <a class="btn btn-primary text-nowrap head-btn" type="submit" asp-page="Login">Выйти</a>
 }
 
 @section Main{
-    <h1>Панель администратора</h1>
-    <form method="post" asp-page-handler="Calculation">
-        <button>Отобразить запросы на расчет доставки</button>
-        <div>
-            @foreach (var calcult in Model.Calculations)
-            {
-                <ul>
-                    <li>Имя: @calcult.Name</li>
-                    <li>Почта: @calcult.Email</li>
-                    <li>Телефон: @calcult.PhoneNumber</li>
-                    <li>Общая площадь: @(calcult.Square)м^2</li>
-                    <li>Вес: @(calcult.Weight)кг</li>
-                    <li>Страна покупки: @calcult.BuyCountry</li>
-                    <li>Город покупки: @calcult.BuyCity</li>
-                    <li>Область доставки: @calcult.DeliveryRegion</li>
-                    <li>Город доставки: @calcult.DeliveryCity</li>
-                </ul>
-            }
-        </div>
-    </form>
+    <main>
+        
+        <section class="data">
+            <div class="container">
 
-    <form method="post" asp-page-handler="Question">
-        <button>Отобразить сообщения с вопросами</button>
-        <div>
-            @foreach (var question in Model.Questions)
-            {
-                <ul>
-                    <li>Имя: @question.Name</li>
-                    <li>Почта: @question.Email</li>
-                    <li>Телефон: @question.PhoneNumber</li>
-                    <li>Тема сообщения: @(question.Subject)</li>
-                    <li>Сообщение:<br/>@(question.Message)</li>
-                    
-                </ul>
-            }
-        </div>
-    </form>
+                <div class="row">
+                    <h1 class="col-8">Панель администратора</h1>
+                    <form method="get" class="col-4">
+                        <button>Обновить</button>
+                    </form >
+                </div>
 
+                <div class="row">
+                    <h2>запросы на расчет доставки</h2>
+                    <div class="row data-ul">
+                        @foreach (var calcult in Model.Calculations)
+                        {
+                            <div class="col">
+                                <ul class="row">
+                                    <li>Имя: @calcult.Name</li>
+                                    <li>Почта: @calcult.Email</li>
+                                    <li>Телефон: @calcult.PhoneNumber</li>
+                                    <li>Общая площадь: @(calcult.Square)м^2</li>
+                                    <li>Вес: @(calcult.Weight)кг</li>
+                                    <li>Страна покупки: @calcult.BuyCountry</li>
+                                    <li>Город покупки: @calcult.BuyCity</li>
+                                    <li>Область доставки: @calcult.DeliveryRegion</li>
+                                    <li>Город доставки: @calcult.DeliveryCity</li>
+                                </ul>
+                                <form method="post" class="row">
+                                    <input class="col-6" type="text" name="message" />
+                                    <button class="col-6" type="submit" asp-page-handler="CalculationSend" asp-route-id=@calcult.Id>Отправить расчет</button>
+                                    <button class="col-12 align-content-center" type="submit" asp-page-handler="CalculationDelete" asp-route-id=@calcult.Id>Удалить</button>
+                                </form>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+
+                <div class="row">
+                    <h2>Сообщения с вопросами</h2>
+                    <div class="row data-ul">
+                        @foreach (var question in Model.Questions)
+                        {
+                        <div class="col">
+                            <ul class="row">
+                                <li>Имя: @question.Name</li>
+                                <li>Почта: @question.Email</li>
+                                <li>Телефон: @question.PhoneNumber</li>
+                                <li>Тема сообщения: @(question.Subject)</li>
+                                <li>Сообщение:<br />@(question.Message)</li>
+                            </ul>
+                            <form method="post" class="row">
+                                    <input class="col-6" type="text" name="message" />
+                                    <button class="col-6" type="submit" asp-page-handler="QuestionSend" asp-route-id=@question.Id>Отправить ответ</button>
+                                    <button class="col-12 align-content-center" type=" submit" asp-page-handler="QuestionDelete" asp-route-id=@question.Id>Удалить</button>
+                            </form>
+                        </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
 }

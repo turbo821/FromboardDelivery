@@ -16,15 +16,55 @@ namespace FromboardDelivery.Pages
             db = context;
         }
 
-        public void OnPostCalculation()
+        public IActionResult OnGet()
         {
-                Calculations = db.Calculations.AsNoTracking().ToList();
-
+            Calculations = db.Calculations.AsNoTracking().ToList();
+            Questions = db.Questions.AsNoTracking().ToList();
+            return Page();
         }
-        public void OnPostQuestion()
-        {
-                Questions = db.Questions.AsNoTracking().ToList();
 
+        public async Task<IActionResult> OnPostCalculationSendAsync(Guid id, string message)
+        {
+            Calculation? calculation = await db.Calculations.FindAsync(id);
+            // send message in email
+            if (calculation != null)
+            {
+                Console.WriteLine($"Äëÿ {calculation.Email}: {message}");
+            }
+            return RedirectToPage();
+        }
+
+        public async Task<IActionResult> OnPostQuestionSendAsync(Guid id, string message)
+        {
+            Question? question = await db.Questions.FindAsync(id);
+            // send message in email
+            if (question != null)
+            {
+                Console.WriteLine($"Äëÿ {question.Email}: {message}");
+            }
+            return RedirectToPage();
+        }
+
+        public async Task<IActionResult> OnPostCalculationDeleteAsync(Guid id)
+        {
+            Calculation? calculation = await db.Calculations.FindAsync(id);
+            if(calculation != null)
+            {
+                db.Calculations.Remove(calculation);
+                await db.SaveChangesAsync();
+            }
+            return RedirectToPage();
+        }
+
+        public async Task<IActionResult> OnPostQuestionDeleteAsync(Guid id)
+        {
+            Question? question = await db.Questions.FindAsync(id);
+            if (question != null)
+            {
+                db.Questions.Remove(question);
+                await db.SaveChangesAsync();
+            }
+            return RedirectToPage();
         }
     }
 }
