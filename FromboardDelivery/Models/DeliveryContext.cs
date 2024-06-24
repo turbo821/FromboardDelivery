@@ -7,7 +7,7 @@ namespace FromboardDelivery.Models
     {
         public DbSet<Calculation> Calculations { get; set; } = null!;
         public DbSet<Question> Questions { get; set; } = null!;
-        public DbSet<Manager> Managers { get; set; } = null!;
+        public DbSet<Admin> Admins { get; set; } = null!;
 
         public DeliveryContext(DbContextOptions<DeliveryContext> options)
             : base(options)
@@ -17,10 +17,10 @@ namespace FromboardDelivery.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Manager>().HasData(
-                    new Manager { Id = Guid.NewGuid(), Name = "Tom Smith", Email = "tom32@gmail.com", Password = "admin" },
-                    new Manager { Id = Guid.NewGuid(), Name = "Alice Evans", Email = "aliceavans@gmail.com", Password = "super_secret" },
-                    new Manager { Id = Guid.NewGuid(), Name = "Sam Roberts", Email = "sam1994@yahoo.com", Password = "password" }
+            modelBuilder.Entity<Admin>().HasData(
+                    new Admin { Id = Guid.NewGuid(), Name = "Tom Smith", Email = "tom32@gmail.com", Password = "admin" },
+                    new Admin { Id = Guid.NewGuid(), Name = "Alice Evans", Email = "aliceavans@gmail.com", Password = "super_secret" },
+                    new Admin { Id = Guid.NewGuid(), Name = "Sam Roberts", Email = "sam1994@yahoo.com", Password = "password" }
             );
 
             modelBuilder.Entity<Calculation>().HasData(

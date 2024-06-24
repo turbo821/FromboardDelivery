@@ -1,11 +1,11 @@
 ﻿@page
 @model FromboardDelivery.Pages.AdminPanelModel
 @{
-    ViewData["Title"] = "Панель администратора";
+    ViewData["Title"] = $"Панель администратора {HttpContext.User.Identity?.Name}";
 }
 
 @section HeaderButton {
-    <a class="btn btn-primary text-nowrap head-btn" type="submit" asp-page="Login">Выйти</a>
+    <a class="btn btn-primary text-nowrap head-btn" type="submit" asp-page-handler="Logout">Выйти</a>
 }
 
 @section Main{
@@ -63,7 +63,7 @@
                                 <li>Сообщение:<br />@(question.Message)</li>
                             </ul>
                             <form method="post" class="row">
-                                    <input class="col-6" type="text" name="message" />
+                                    <textarea class="col-6" type="text" name="message" ></textarea>
                                     <button class="col-6" type="submit" asp-page-handler="QuestionSend" asp-route-id=@question.Id>Отправить ответ</button>
                                     <button class="col-12 align-content-center" type=" submit" asp-page-handler="QuestionDelete" asp-route-id=@question.Id>Удалить</button>
                             </form>

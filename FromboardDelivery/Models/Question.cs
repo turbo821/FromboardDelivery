@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using FromboardDelivery.Interfaces;
 
 namespace FromboardDelivery.Models
 {
-    public class Question
+    public class Question : IPersonal
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 

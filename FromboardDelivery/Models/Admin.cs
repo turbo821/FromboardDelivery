@@ -1,6 +1,6 @@
 ﻿namespace FromboardDelivery.Models
 {
-    public class Manager
+    public class Admin
     {
         public Guid Id { get; set; }
         public string Name { get; set; } = null!;

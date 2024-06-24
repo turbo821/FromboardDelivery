@@ -2,18 +2,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using FromboardDelivery.Models;
 using Microsoft.EntityFrameworkCore;
+using FromboardDelivery.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 
 namespace FromboardDelivery.Pages
 {
+    [Authorize]
     public class AdminPanelModel : PageModel
     {
         DeliveryContext db;
+        IEmailSending emailSender;
         public List<Calculation> Calculations { get; set; } = new();
         public List<Question> Questions { get; set; } = new();
 
-        public AdminPanelModel(DeliveryContext context)
+        public AdminPanelModel(DeliveryContext context, IEmailSending sender)
         {
             db = context;
+            emailSender = sender;
         }
 
         public IActionResult OnGet()
@@ -29,6 +36,8 @@ namespace FromboardDelivery.Pages
             // send message in email
             if (calculation != null)
             {
+                
+                await emailSender.SendAsync(calculation, "Расчет доставки", $"{calculation.Name} здравствуйте, мы просмотрели вашу заявку и составили расчет: {message}");
                 Console.WriteLine($"Для {calculation.Email}: {message}");
             }
             return RedirectToPage();
@@ -40,6 +49,8 @@ namespace FromboardDelivery.Pages
             // send message in email
             if (question != null)
             {
+                await emailSender.SendAsync(question, "Ответ на заявку", $"{question.Name} здравствуйте,\n{message}");
+                Console.WriteLine($"Для {question.Email}: {message}");
                 Console.WriteLine($"Для {question.Email}: {message}");
             }
             return RedirectToPage();
@@ -65,6 +76,12 @@ namespace FromboardDelivery.Pages
                 await db.SaveChangesAsync();
             }
             return RedirectToPage();
+        }
+
+        public async Task<IActionResult> OnGetLogoutAsync()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToPage("Login");
         }
     }
 }
