@@ -1,0 +1,15 @@
+﻿/* validation form */
+
+.field-validation-error {
+    color: #B81111;
+}
+.abs-div{
+    height: 54px;
+}
+.abs-div-textarea {
+    height: 174px;
+}
+input.input-validation-error {
+    border: 1px solid #B81111;
+}
+

@@ -138,12 +138,6 @@ header .delivery-pagh {
     line-height: 32px;
 }
 
-/* .nav-row{
-    border-top: 1px solid var(--purple-dark-color);
-    border-bottom: 1px solid var(--purple-dark-color);
-    padding: 20px 0px;
-} */
-
 .btn {
     background-color: var(--purple-dark-color);
     border: var(--purple-dark-color);
@@ -154,7 +148,7 @@ section .container {
 }
 
 .head-btn {
-    padding: 12px 27px;
+    padding: 12px 40px;
 }
 
 
@@ -456,9 +450,8 @@ footer nav {
 .data-ul{
     background-color: white;
 }
-.data-ul .col{
 
-}
+/* increase hover quality image  */
 
 /* media */
 /*@include media-breakpoint-only(xxl) { ... } maket: 1536 -- max --> xxl*/
@@ -796,7 +789,9 @@ footer nav {
         }
 }
 
-
+#qwert{
+    display: none;
+}
 /* @include media-breakpoint-only(sm) { ... } maket: 591 -- 758 --> sm*/
 @media (min-width: 499px) and (max-width: 767.98px) {
     .container {

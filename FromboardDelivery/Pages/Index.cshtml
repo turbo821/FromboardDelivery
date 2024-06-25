@@ -8,6 +8,10 @@
     <a class="btn btn-primary text-nowrap head-btn" type="submit" asp-page="AdminPanel">Войти</a>
 }
 
+@section Links{
+    <link href="~/css/index.css" rel="stylesheet">
+}
+
 @section Main{
     <main>
 
@@ -33,41 +37,41 @@
                         <div class="row row-form-p">
                             <p class="form-p">Посчитайте, сколько будет стоить перевозка покупки из зарубежа</p>
                         </div>
-                        <h2>@Model.Message</h2>
+                        @* <h2>@Model.Message</h2> *@
                         <form class="row mx-auto" method="post" asp-antiforgery="true" asp-page-handler="Calculation">
-                            <div class="col-12 mb-4">
+                            <div class="col-12 mb-4 abs-div">
                                 <input asp-for="Calculation.Name" class="form-control" id="inputName" placeholder="Имя" />
                                 <span asp-validation-for="Calculation.Name"/>
                             </div>
-                            <div class="col-6 mb-4 align-self-center">
+                            <div class="col-6 mb-4 abs-div">
                                 <input asp-for="Calculation.Email" class="form-control" id="inputEmail" placeholder="Почта" />
                                 <span asp-validation-for="Calculation.Email" />
                             </div>
-                            <div class="col-6 mb-4">
+                            <div class="col-6 mb-4 abs-div">
                                 <input asp-for="Calculation.PhoneNumber" class="form-control" id="inputNumber" placeholder="Телефон" />
                                 <span asp-validation-for="Calculation.PhoneNumber" />
                             </div>
-                            <div class="col-6 mb-4">
+                            <div class="col-6 mb-4 abs-div">
                                 <input asp-for="Calculation.Square" type="number" class="form-control" id="inputSquare" placeholder="Общая площадь, м^2" />
                                 <span asp-validation-for="Calculation.Square" />
                             </div>
-                            <div class="col-6 mb-4">
+                            <div class="col-6 mb-4 abs-div">
                                 <input asp-for="Calculation.Weight" type="number" class="form-control" id="inputWeight" placeholder="Вес, кг" />
                                 <span asp-validation-for="Calculation.Weight" />
                             </div>
-                            <div class="col-6 mb-4">
+                            <div class="col-6 mb-4 abs-div">
                                 <input asp-for="Calculation.BuyCountry" class="form-control" id="inputCountryBuy" placeholder="Страна покупки" />
                                 <span asp-validation-for="Calculation.BuyCountry" />
                             </div>
-                            <div class="col-6 mb-4">
+                            <div class="col-6 mb-4 abs-div">
                                 <input asp-for="Calculation.BuyCity" class="form-control" id="inputCityBuy" placeholder="Город покупки" />
                                 <span asp-validation-for="Calculation.BuyCity" />
                             </div>
-                            <div class="col-6 mb-4">
+                            <div class="col-6 mb-4 abs-div">
                                 <input asp-for ="Calculation.DeliveryRegion" class="form-control" id="inputRegionDelivery" placeholder="Область доставки" />
                                 <span asp-validation-for="Calculation.DeliveryRegion" />
                             </div>
-                            <div class="col-6 mb-4">
+                            <div class="col-6 mb-4 abs-div">
                                 <input asp-for="Calculation.DeliveryCity" class="form-control" id="inputCityDelivery" placeholder="Город доставки" />
                                 <span asp-validation-for="Calculation.DeliveryCity" />
                             </div>
@@ -158,25 +162,25 @@
                 </div>
                 <div class="row quality-items">
                     <div class="col-xxl-3 col-md-6 col-xs-12 quality-item">
-                        <img  class="img-fluid " src="img/certificate-russia.png" alt="image">
+                        <a href="img/certificate-russia.png"><img class="img-fluid" src="img/certificate-russia.png" alt="image"></a>
                         <p>Свидетельство о регистрации в РФ</p>
                     </div>
                     <div class="col-xxl-3  col-md-6 col-xs-12 quality-item">
-                        <img class="img-fluid" src="img/certificate-usa.png" alt="image">
+                        <a href="img/certificate-usa.png"><img class="img-fluid" src="img/certificate-usa.png" alt="image"></a>
                         <p>Свидетельство о регистрации в США</p>
                     </div>
                     <div class="col-xxl-3  col-md-6 col-xs-12 quality-item">
-                        <img class="img-fluid" src="img/certificate-china.png" alt="image">
+                        <a href="img/certificate-china.png"><img class="img-fluid" src="img/certificate-china.png" alt="image"></a>
                         <p>Свидетельство о регистрации в Китае</p>
                     </div>
                     <div class="col-xxl-3  col-md-6 col-xs-12 quality-item">
-                        <img class="img-fluid" src="img/certificate-uk.png" alt="image">
+                        <a href="img/certificate-uk.png"><img class="img-fluid" src="img/certificate-uk.png" alt="image"></a>
                         <p>Свидетельство о регистрации в Великобритнии</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 d-grid mx-auto col-btn-quality">
-                        <button class="btn btn-primary btn-quality text-nowrap  rounded-4" type="submit"><span>Показать больше документов</span></button>
+                        <a class="btn btn-primary btn-quality text-nowrap  rounded-4" type="submit" asp-page="Index"><span>Показать больше документов</span></a>
                     </div>
                 </div>
             </div>
@@ -280,23 +284,23 @@
                         <h2>Остались вопросы?</h2>
                     </div>
                     <form class="row mx-auto" method="post" asp-antiforgery="true" asp-page-handler="Question">
-                        <div class="col-6 mb-4">
+                        <div class="col-6 mb-4 abs-div">
                             <input asp-for="Question.Name" class="form-control" id="inputName2" placeholder="Имя" />
                             <span asp-validation-for="Question.Name" />
                         </div>
-                        <div class="col-6 mb-4 align-self-center">
+                        <div class="col-6 mb-4 abs-div">
                             <input asp-for="Question.Email" class="form-control" id="inputEmail2" placeholder="Почта" />
                             <span asp-validation-for="Question.Email" />
                         </div>
-                        <div class="col-6 mb-4">
+                        <div class="col-6 mb-4 abs-div">
                             <input asp-for="Question.PhoneNumber" class="form-control" id="inputNumber2" placeholder="Телефон" />
                             <span asp-validation-for="Question.PhoneNumber" />
                         </div>
-                        <div class="col-6 mb-4">
+                        <div class="col-6 mb-4 abs-div">
                             <input asp-for="Question.Subject" class="form-control" id="inputSquare2" placeholder="Тема вопроса" />
                             <span asp-validation-for="Question.Subject" />
                         </div>
-                        <div class="col-12 mb-4">
+                        <div class="col-12 mb-4 abs-div-textarea">
                             <textarea asp-for="Question.Message" class="form-control questions-message" placeholder="Сообщение..." id="floatingTextarea2" style="height: 150px"></textarea>
                             <span asp-validation-for="Question.Message" />
                           </div>
