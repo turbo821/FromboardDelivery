@@ -7,8 +7,8 @@ namespace FromboardDelivery.Models
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        [Required(ErrorMessage = "От 3 до 15 символов")]
-        [StringLength(15, MinimumLength = 3, ErrorMessage = "От 3 до 15 символов")]
+        [Required(ErrorMessage = "От 3 до 30 символов")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "От 3 до 30 символов")]
         public string? Name { get; set; }
 
         [DataType(DataType.EmailAddress)]

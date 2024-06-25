@@ -2,6 +2,7 @@
 
 .field-validation-error {
     color: #B81111;
+
 }
 .abs-div{
     height: 54px;
@@ -12,4 +13,10 @@
 input.input-validation-error {
     border: 1px solid #B81111;
 }
-
+.message{
+    margin: 10px auto;
+}
+.login-btn{
+    margin-left: 100px;
+    margin-right: 100px;
+}

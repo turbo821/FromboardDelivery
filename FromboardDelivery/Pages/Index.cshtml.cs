@@ -12,7 +12,6 @@ namespace FromboardDelivery.Pages
         public Calculation Calculation { get; set; } = new();
         [BindProperty]
         public Question Question { get; set; } = new();
-        public string Message { get; private set; } = "Добавление товара";
 
         public IndexModel(DeliveryContext context)
         {
@@ -26,15 +25,13 @@ namespace FromboardDelivery.Pages
         {
             db.Calculations.Add(Calculation);
             await db.SaveChangesAsync();
-            Message = $"Расчет доставки для {Calculation.Name}({Calculation.Email}): Регион: {Calculation.DeliveryRegion} Телефон: {Calculation.PhoneNumber} Id: {Calculation.Id}";
-            return Page();
+            return RedirectToPage();
         }
         public async Task<IActionResult> OnPostQuestion()
         {
             db.Questions.Add(Question);
             await db.SaveChangesAsync();
-            Message = $"Заявка для {Question.Name}({Question.Email}): Тема: {Question.Subject}";
-            return Page();
+            return RedirectToPage();
         }
     }
 }

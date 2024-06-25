@@ -441,11 +441,10 @@ footer nav {
     justify-content: flex-start;
 }
 /* login */
-.login{
-    min-height: 500px;
+.login > .row {
     width: 800px;
+    margin: 70px auto;
 }
-
 /* data */
 .data-ul{
     background-color: white;
@@ -464,11 +463,11 @@ footer nav {
     .calcult form {
         width: 496px;
     }
-    .login form {
+    .login calcult {
         width: 800px;
     }
     .login{
-        width: 900px;
+        width: 1000px;
     }
     /* reviews */
     .carousel .container .row {

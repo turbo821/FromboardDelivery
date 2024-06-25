@@ -5,6 +5,10 @@
     ViewData["Title"] = "Вход";
 }
 
+@section Links{
+    <link href="~/css/index.css" rel="stylesheet">
+}
+
 @section HeaderButton {
     <a class="btn btn-primary text-nowrap head-btn" type="submit" asp-page="Index">Главная</a>
 }
@@ -18,18 +22,18 @@
                         <div class="row">
                             <h2>Вход</h2>
                         </div>
-                        <h2></h2>
                         <form class="row mx-auto" method="post" asp-antiforgery="true">
-                            <div class="col-12 mb-4">
-                                <input asp-for="Manager.Email" class="form-control" id="email" placeholder="Почта" />
-                                <span asp-validation-for="Manager.Email" />
+                            <div class="col-12 mb-4  abs-div">
+                                <input asp-for="Admin.Email" class="form-control" id="email" placeholder="Почта" />
+                                <span asp-validation-for="Admin.Email" />
                             </div>
-                            <div class="col-12 mb-4">
-                                <input asp-for="Manager.Password" class="form-control" id="password" placeholder="Пароль" />
-                                <span asp-validation-for="Manager.Password" />
+                            <div class="col-12 mb-4  abs-div">
+                                <input asp-for="Admin.Password" class="form-control" id="password" placeholder="Пароль" />
+                                <span asp-validation-for="Admin.Password" />
                             </div>
-                            <div class="col-12 mb-3 d-grid">
-                                <button type="submit" class="btn btn-primary mb-3">Войти</button>
+                            <div class="field-validation-error message">@Model.Message</div>
+                            <div class="col-12 mb-3 d-grid align-content-center">
+                                <button type="submit" class="btn btn-primary mb-3 login-btn">Войти</button>
                             </div>
                         </form>
                     </div>
