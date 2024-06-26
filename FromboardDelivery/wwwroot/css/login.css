@@ -1,0 +1,31 @@
+﻿
+.login > .row {
+    width: 700px;
+    margin: 70px auto;
+}
+@media (min-width: 768px) and (max-width: 1399.98px) {
+    .calcult {
+        margin-top: 0;
+    }
+}
+    @media (max-width: 767.98px) {
+        .login > .row {
+            width: 500px;
+            margin: 70px auto;
+        }
+
+        .calcult {
+            width: 500px;
+            margin: 0px auto;
+        }
+
+            .calcult .row {
+                width: 400px;
+                margin: 0px auto;
+            }
+
+        .login-btn {
+            margin: 0 auto;
+            width: 300px;
+        }
+    }

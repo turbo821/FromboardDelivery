@@ -3,6 +3,14 @@
 @{
     ViewData["Title"] = $"Панель администратора {HttpContext.User.Identity?.Name}";
 }
+@section Links{
+    <link href="~/css/admin.css" rel="stylesheet">
+    <link href="~/css/index.css" rel="stylesheet">
+}
+
+@section SecretButton {
+    <a class="zaklad" type="submit" asp-page-handler="Logout"><img src="img/mini-icon/Burger.svg" alt="burger"></a>
+}
 
 @section HeaderButton {
     <a class="btn btn-primary text-nowrap head-btn" type="submit" asp-page-handler="Logout">Выйти</a>
@@ -11,65 +19,73 @@
 @section Main{
     <main>
         
-        <section class="data">
+        <section class="dataq">
             <div class="container">
 
-                <div class="row">
-                    <h1 class="col-8">Панель администратора</h1>
-                    <form method="get" class="col-4">
-                        <button>Обновить</button>
+                <div class="row header-row-admin">
+                    <h1 class="col-xxl-10 col-lg-9 col-xs-3 admin-h1-header">Панель администратора</h1>
+                    <form method="get" class="col-xxl-2 col-lg-3 col-xs-1">
+                        <button class="btn btn-primary mb-3 header-btn-admin">Обновить</button>
                     </form >
                 </div>
 
-                <div class="row">
-                    <h2>запросы на расчет доставки</h2>
-                    <div class="row data-ul">
-                        @foreach (var calcult in Model.Calculations)
-                        {
-                            <div class="col">
-                                <ul class="row">
-                                    <li>Имя: @calcult.Name</li>
-                                    <li>Почта: @calcult.Email</li>
-                                    <li>Телефон: @calcult.PhoneNumber</li>
-                                    <li>Общая площадь: @(calcult.Square)м^2</li>
-                                    <li>Вес: @(calcult.Weight)кг</li>
-                                    <li>Страна покупки: @calcult.BuyCountry</li>
-                                    <li>Город покупки: @calcult.BuyCity</li>
-                                    <li>Область доставки: @calcult.DeliveryRegion</li>
-                                    <li>Город доставки: @calcult.DeliveryCity</li>
-                                </ul>
-                                <form method="post" class="row">
-                                    <input class="col-6" type="text" name="message" />
-                                    <button class="col-6" type="submit" asp-page-handler="CalculationSend" asp-route-id=@calcult.Id>Отправить расчет</button>
-                                    <button class="col-12 align-content-center" type="submit" asp-page-handler="CalculationDelete" asp-route-id=@calcult.Id>Удалить</button>
-                                </form>
+                <div class="row admin-data-row">
+                    <h2 class="admin-data-h2">Запросы на расчет доставки</h2>
+                    @foreach (var calcult in Model.Calculations)
+                    {
+                    <div class="card rounded-4 col-4 admin-card">
+                            <div class="row">
+                                <div class="col card-body admin-card-body">
+                                    <p>Имя: @calcult.Name</p>
+                                    <p>Почта: @calcult.Email</p>
+                                    <p>Телефон: @calcult.PhoneNumber</p>
+                                    <p>Общая площадь: @(calcult.Square)м^2</p>
+                                    <p>Вес: @(calcult.Weight)кг</p>
+                                    <p>Страна покупки: @calcult.BuyCountry</p>
+                                    <p>Город покупки: @calcult.BuyCity</p>
+                                    <p>Область доставки: @calcult.DeliveryRegion</p>
+                                    <p>Город доставки: @calcult.DeliveryCity</p>
+                                </div>
                             </div>
-
-                        }
+                            <form method="post" class="mx-auto admin-data-form">
+                                <input class="form-control" type="text" asp-for="Message" />
+                                <button class="btn btn-primary" type="submit" asp-page-handler="CalculationSend" asp-route-id=@calcult.Id>Отправить расчет</button>
+                            </form>
+                            <form method="post" class="mx-auto admin-data-form">
+                                <button class="btn btn-primary" type="submit" asp-page-handler="CalculationDelete" asp-route-id=@calcult.Id>Удалить</button>
+                            </form>
                     </div>
+                    }
                 </div>
 
-                <div class="row">
-                    <h2>Сообщения с вопросами</h2>
-                    <div class="row data-ul">
+                <div class="row admin-data-row">
+                    <h2 class="admin-data-h2">Сообщения с вопросами</h2>
                         @foreach (var question in Model.Questions)
                         {
-                        <div class="col">
-                            <ul class="row">
-                                <li>Имя: @question.Name</li>
-                                <li>Почта: @question.Email</li>
-                                <li>Телефон: @question.PhoneNumber</li>
-                                <li>Тема сообщения: @(question.Subject)</li>
-                                <li>Сообщение:<br />@(question.Message)</li>
-                            </ul>
-                            <form method="post" class="row">
-                                    <textarea class="col-6" type="text" name="message" ></textarea>
-                                    <button class="col-6" type="submit" asp-page-handler="QuestionSend" asp-route-id=@question.Id>Отправить ответ</button>
-                                    <button class="col-12 align-content-center" type=" submit" asp-page-handler="QuestionDelete" asp-route-id=@question.Id>Удалить</button>
-                            </form>
-                        </div>
+                            <div class="card rounded-4 col-4 admin-card">
+                                <div class="row">
+                                    <div class="col card-body admin-card-body">
+                                        <p>Имя: @question.Name</p>
+                                        <p>Почта: @question.Email</p>
+                                        <p>Телефон: @question.PhoneNumber</p>
+                                        <p>Тема сообщения: @(question.Subject)</p>
+                                        <p>Сообщение:<br />@(question.Message)</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                <form method="post" class="mx-auto admin-data-form">
+                                    <textarea class="form-control questions-message" asp-for="Message" style="height: 120px"></textarea>
+                                    <button class="btn btn-primary mb-3" type="submit" asp-page-handler="QuestionSend" asp-route-id=@question.Id>Отправить ответ</button>
+                                </form>
+                                <form method="post" class="mx-auto admin-data-form">
+                                    <button class="btn btn-primary mb-3" type=" submit" asp-page-handler="QuestionDelete" asp-route-id=@question.Id>Удалить</button>
+                                </form>
+                                </div>
+                            </div>
+
+
+
                         }
-                    </div>
                 </div>
 
             </div>

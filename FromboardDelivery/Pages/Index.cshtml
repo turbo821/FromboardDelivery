@@ -4,12 +4,16 @@
     ViewData["Title"] = "Доставка вещей из-за рубежа";
 }
 
-@section HeaderButton{
-    <a class="btn btn-primary text-nowrap head-btn" type="submit" asp-page="AdminPanel">Войти</a>
+@section Links {
+    <link href="~/css/index.css" rel="stylesheet">
 }
 
-@section Links{
-    <link href="~/css/index.css" rel="stylesheet">
+@section SecretButton{
+    <a class="zaklad" type="submit" asp-page="AdminPanel"><img src="img/mini-icon/Burger.svg" alt="burger"></a>
+}
+
+@section HeaderButton{
+    <a class="btn btn-primary text-nowrap head-btn" type="submit" asp-page="AdminPanel">Войти</a>
 }
 
 @section Main{

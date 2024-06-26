@@ -25,7 +25,7 @@
 
 body {
     font-family: var(--font-family);
-    min-width: 577px;
+    min-width: 620px;
 }
 
 main {
@@ -440,17 +440,7 @@ footer nav {
     display: flex;
     justify-content: flex-start;
 }
-/* login */
-.login > .row {
-    width: 800px;
-    margin: 70px auto;
-}
-/* data */
-.data-ul{
-    background-color: white;
-}
 
-/* increase hover quality image  */
 
 /* media */
 /*@include media-breakpoint-only(xxl) { ... } maket: 1536 -- max --> xxl*/
@@ -787,12 +777,8 @@ footer nav {
             display: inline;
         }
 }
-
-#qwert{
-    display: none;
-}
 /* @include media-breakpoint-only(sm) { ... } maket: 591 -- 758 --> sm*/
-@media (min-width: 499px) and (max-width: 767.98px) {
+@media (max-width: 767.98px) {
     .container {
         width: 610px;
     }

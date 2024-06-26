@@ -1,0 +1,104 @@
+﻿.header-row-admin{
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.header-btn-admin {
+    padding: 12px 30px;
+    margin-left: 30px;
+}
+.admin-h1-header {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 40px;
+    margin: 0;
+    margin-bottom: 16px;
+    color: var(--black-color);
+    padding-right: 35px;
+}
+
+.admin-data-h2 {
+    margin: 20px auto;
+    font-weight: 800;
+}
+
+.admin-data-row{
+    margin-bottom: 30px;
+    justify-content: start;
+}
+.admin-card{
+    margin-bottom: 30px;
+    padding: 20px;
+    width: 500px;
+}
+.admin-card-body p {
+    font-size: 18px;
+    font-weight: 600;
+}
+.admin-data-form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.admin-data-form * {
+    margin: 5px auto;
+    width: 300px;
+}
+
+.admin-data-form input {
+    border: 2px solid var(--main-color);
+    border-radius: 4px;
+    padding: 12px;
+}
+
+.admin-data-form input:hover, .admin-data-form input:focus {
+    border: 2px solid var(--purple-dark-color);
+}
+
+@media (min-width: 992px) and (max-width: 1399.98px) {
+    .admin-h1-header {
+        padding-right: 0;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .header-btn-admin {
+        display: none;
+    }
+
+    .admin-card {
+        width: 400px;
+    }
+
+    .hero-h2-title {
+        font-size: 30px;
+    }
+
+    .admin-card {
+        width: 350px;
+        padding: 5px 20px;
+        min-height: 280px;
+        margin-left: 0;
+    }
+
+    .admin-data-form {
+        width: 300px;
+    }
+
+        .admin-data-form * {
+            margin: 10px auto;
+            width: 200px;
+        }
+}
+
+@media (max-width: 767.98px) {
+
+    .header-btn-admin {
+        display: none;
+    }
+    .admin-card {
+        padding: 5px 20px;
+        min-height: 280px;
+        margin-left: 0;
+    }
+}

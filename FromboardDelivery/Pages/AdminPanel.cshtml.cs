@@ -6,7 +6,7 @@ using FromboardDelivery.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
-
+using System.ComponentModel.DataAnnotations;
 namespace FromboardDelivery.Pages
 {
     [Authorize]
@@ -16,7 +16,10 @@ namespace FromboardDelivery.Pages
         IEmailSending emailSender;
         public List<Calculation> Calculations { get; set; } = new();
         public List<Question> Questions { get; set; } = new();
-
+        
+        [Required(ErrorMessage = "Введите сообщение")]
+        [BindProperty]
+        public string? Message { get; set; }
         public AdminPanelModel(DeliveryContext context, IEmailSending sender)
         {
             db = context;
@@ -30,28 +33,28 @@ namespace FromboardDelivery.Pages
             return Page();
         }
 
-        public async Task<IActionResult> OnPostCalculationSendAsync(Guid id, string message)
+        public async Task<IActionResult> OnPostCalculationSendAsync(Guid id)
         {
             Calculation? calculation = await db.Calculations.FindAsync(id);
             // send message in email
             if (calculation != null)
             {
                 
-                await emailSender.SendAsync(calculation, "Расчет доставки", $"{calculation.Name} здравствуйте, мы просмотрели вашу заявку и составили расчет: {message}");
-                Console.WriteLine($"Для {calculation.Email}: {message}");
+                await emailSender.SendAsync(calculation, "Расчет доставки", $"{calculation.Name} здравствуйте, мы просмотрели вашу заявку и составили расчет: {Message}");
+                Console.WriteLine($"Для {calculation.Email}: {Message}");
             }
             return RedirectToPage();
         }
 
-        public async Task<IActionResult> OnPostQuestionSendAsync(Guid id, string message)
+        public async Task<IActionResult> OnPostQuestionSendAsync(Guid id)
         {
             Question? question = await db.Questions.FindAsync(id);
             // send message in email
             if (question != null)
             {
-                await emailSender.SendAsync(question, "Ответ на заявку", $"{question.Name} здравствуйте,\n{message}");
-                Console.WriteLine($"Для {question.Email}: {message}");
-                Console.WriteLine($"Для {question.Email}: {message}");
+                await emailSender.SendAsync(question, "Ответ на заявку", $"{question.Name} здравствуйте,\n{Message}");
+                Console.WriteLine($"Для {question.Email}: {Message}");
+                Console.WriteLine($"Для {question.Email}: {Message}");
             }
             return RedirectToPage();
         }

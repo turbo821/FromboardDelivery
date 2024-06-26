@@ -7,6 +7,11 @@
 
 @section Links{
     <link href="~/css/index.css" rel="stylesheet">
+    <link href="~/css/login.css" rel="stylesheet">
+}
+
+@section SecretButton {
+    <a class="zaklad" type="submit" asp-page="Index"><img src="img/mini-icon/Burger.svg" alt="burger"></a>
 }
 
 @section HeaderButton {
@@ -18,8 +23,8 @@
         <section>
             <div class="container login">
                 <div class="row">
-                    <div class="col-12 calcult rounded-4">
-                        <div class="row">
+                    <div class="calcult rounded-4">
+                        <div class="row mx-auto">
                             <h2>Вход</h2>
                         </div>
                         <form class="row mx-auto" method="post" asp-antiforgery="true">
