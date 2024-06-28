@@ -82,6 +82,8 @@
         </div>
     </footer>
 
+    @RenderSection("Modals", false)
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"
             asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
@@ -95,8 +97,6 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"
             asp-fallback-src="~/lib/jquery.maskedinput/jquery.maskedinput.min.js">
-    </script>
-    <script type="text/javascript" src="~/js/site.js">
     </script>
     @RenderSection("Scripts", false)
 </body>

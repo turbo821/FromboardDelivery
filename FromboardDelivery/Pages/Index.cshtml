@@ -6,6 +6,7 @@
 
 @section Links {
     <link href="~/css/index.css" rel="stylesheet">
+    <link href="~/css/modal.css" rel="stylesheet">
 }
 
 @section SecretButton{
@@ -42,7 +43,7 @@
                             <p class="form-p">Посчитайте, сколько будет стоить перевозка покупки из зарубежа</p>
                         </div>
                         @* <h2>@Model.Message</h2> *@
-                        <form class="row mx-auto" method="post" asp-antiforgery="true" asp-page-handler="Calculation">
+                        <form class="row mx-auto" method="post" asp-antiforgery="true" asp-page-handler="Calculation" id="calculationForm">
                             <div class="col-12 mb-4 abs-div">
                                 <input asp-for="Calculation.Name" class="form-control" id="inputName" placeholder="Имя" />
                                 <span asp-validation-for="Calculation.Name"/>
@@ -195,7 +196,7 @@
                     <div class="row">
                         <h2>Остались вопросы?</h2>
                     </div>
-                    <form class="row mx-auto" method="post" asp-antiforgery="true" asp-page-handler="Question">
+                    <form class="row mx-auto" method="post" asp-antiforgery="true" asp-page-handler="Question" id="questionForm">
                         <div class="col-6 mb-4 abs-div">
                             <input asp-for="Question.Name" class="form-control" id="inputName2" placeholder="Имя" />
                             <span asp-validation-for="Question.Name" />
@@ -222,6 +223,23 @@
                     </form>
                 </div>
             </div>
+            
         </section>
     </main>
+}
+
+@section Modals{
+    @if (Model.SendCalculation)
+    {
+        <modal id="modalC" id-label="modalCLabel" title="Расчет успешно заказан!">После подсчета стоимости доставки на вашу почту придет письмо с ответом</modal>
+    }
+    @if (Model.SendQuestion)
+    {
+        <modal id="modalQ" id-label="modalQLabel" title="Заявка успешно отправлена!">Ответ на заявку придет на вашу почту в ближайшее время</modal>
+    }
+}
+
+@section Scripts{
+    <script type="text/javascript" src="~/js/site.js"></script>
+    <script type="text/javascript" src="~/js/indexModal.js"></script>
 }

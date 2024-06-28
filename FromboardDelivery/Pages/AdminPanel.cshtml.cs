@@ -14,6 +14,10 @@ namespace FromboardDelivery.Pages
     {
         DeliveryContext db;
         IEmailSending emailSender;
+        public bool Sended { get; set; } = false;
+        public bool Deleted { get; set; } = false;
+        //public GroupViewModel CalculationGroup { get; set; }
+        //public GroupViewModel QuestionsGroup { get; set; }
         public List<Calculation> Calculations { get; set; } = new();
         public List<Question> Questions { get; set; } = new();
         
@@ -26,10 +30,24 @@ namespace FromboardDelivery.Pages
             emailSender = sender;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(bool? deleted, bool? sended/*, int calculationPage = 1, int questionPage = 1*/)
         {
-            Calculations = db.Calculations.AsNoTracking().ToList();
-            Questions = db.Questions.AsNoTracking().ToList();
+            Sended = sended ?? false;
+            Deleted = deleted ?? false;
+
+            //int pageSize = 6;
+
+            //IQueryable<Calculation> calculations = db.Calculations.AsNoTracking();
+            //IQueryable<Question> questions = db.Questions.AsNoTracking();
+
+            //var countCalculation = await calculations.CountAsync();
+            //var countQuestion = await questions.CountAsync();
+
+            //Calculations = await calculations.Skip((calculationPage - 1) * pageSize).Take(pageSize).ToListAsync();
+            //Questions = await questions.Skip((questionPage - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            //CalculationGroup = new GroupViewModel(countCalculation, calculationPage, pageSize);
+            //QuestionsGroup = new GroupViewModel(countQuestion, questionPage, pageSize);
             return Page();
         }
 
@@ -39,11 +57,11 @@ namespace FromboardDelivery.Pages
             // send message in email
             if (calculation != null)
             {
-                
-                await emailSender.SendAsync(calculation, "Расчет доставки", $"{calculation.Name} здравствуйте, мы просмотрели вашу заявку и составили расчет: {Message}");
+               // await emailSender.SendAsync(calculation, "Расчет доставки", $"{calculation.Name} здравствуйте, мы просмотрели вашу заявку и составили расчет: {Message}");
                 Console.WriteLine($"Для {calculation.Email}: {Message}");
+                Sended = true;
             }
-            return RedirectToPage();
+            return Page();
         }
 
         public async Task<IActionResult> OnPostQuestionSendAsync(Guid id)
@@ -52,11 +70,11 @@ namespace FromboardDelivery.Pages
             // send message in email
             if (question != null)
             {
-                await emailSender.SendAsync(question, "Ответ на заявку", $"{question.Name} здравствуйте,\n{Message}");
+                //await emailSender.SendAsync(question, "Ответ на заявку", $"{question.Name} здравствуйте,\n{Message}");
                 Console.WriteLine($"Для {question.Email}: {Message}");
-                Console.WriteLine($"Для {question.Email}: {Message}");
+                Sended = true;
             }
-            return RedirectToPage();
+            return RedirectToPage(new { sended = Sended, email = question?.Email });
         }
 
         public async Task<IActionResult> OnPostCalculationDeleteAsync(Guid id)
@@ -66,8 +84,9 @@ namespace FromboardDelivery.Pages
             {
                 db.Calculations.Remove(calculation);
                 await db.SaveChangesAsync();
+                Deleted = true;
             }
-            return RedirectToPage();
+            return RedirectToPage(new { deleted = Deleted });
         }
 
         public async Task<IActionResult> OnPostQuestionDeleteAsync(Guid id)
@@ -77,8 +96,9 @@ namespace FromboardDelivery.Pages
             {
                 db.Questions.Remove(question);
                 await db.SaveChangesAsync();
+                Deleted = true;
             }
-            return RedirectToPage();
+            return RedirectToPage(new { deleted = Deleted });
         }
 
         public async Task<IActionResult> OnGetLogoutAsync()

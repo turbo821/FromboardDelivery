@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\css\admin.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\modal.css" />
   </ItemGroup>
 
   <ItemGroup>

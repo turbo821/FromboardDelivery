@@ -6,6 +6,7 @@
 @section Links{
     <link href="~/css/admin.css" rel="stylesheet">
     <link href="~/css/index.css" rel="stylesheet">
+    <link href="~/css/modal.css" rel="stylesheet">
 }
 
 @section SecretButton {
@@ -83,10 +84,39 @@
                                 </div>
                             </div>
                         }
+                    @if (Model.CalculationGroup.HasPreviousPage)
+                    {
+                        <a asp-action="Index"
+                           asp-route-calculation-page="@(Model.CalculationGroup.PageNumber - 1)" class="glyphicon glyphicon-chevron-left">
+                            Назад
+                        </a>
+                    }
+                    @if (Model.CalculationGroup.HasNextPage)
+                    {
+                        <a asp-action="Index"
+                           asp-route-calculation-page="@(Model.CalculationGroup.PageNumber + 1)" class="glyphicon glyphicon-chevron-right">
+                            Вперед
+                        </a>
+                    }
                 </div>
 
             </div>
         </section>
 
     </main>
+}
+
+@section Modals {
+    @if (Model.Sended)
+    {
+        <modal id="modalS" id-label="modalCLabel" title="Ответ послан на почту ">-----------------</modal>
+    }
+    @if (Model.Deleted)
+    {
+        <modal id="modalD" id-label="modalQLabel" title="Заявка успеешно удалена">-----------------</modal>
+    }
+}
+
+@section Scripts{
+    <script type="text/javascript" src="~/js/modalAdmin.js"></script>
 }
