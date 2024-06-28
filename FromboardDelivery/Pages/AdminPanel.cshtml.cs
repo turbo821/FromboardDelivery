@@ -16,8 +16,8 @@ namespace FromboardDelivery.Pages
         IEmailSending emailSender;
         public bool Sended { get; set; } = false;
         public bool Deleted { get; set; } = false;
-        //public GroupViewModel CalculationGroup { get; set; }
-        //public GroupViewModel QuestionsGroup { get; set; }
+        public GroupViewModel CalculationGroup { get; set; } = null!;
+        public GroupViewModel QuestionsGroup { get; set; } = null!;
         public List<Calculation> Calculations { get; set; } = new();
         public List<Question> Questions { get; set; } = new();
         
@@ -30,24 +30,27 @@ namespace FromboardDelivery.Pages
             emailSender = sender;
         }
 
-        public IActionResult OnGet(bool? deleted, bool? sended/*, int calculationPage = 1, int questionPage = 1*/)
+        public async Task<IActionResult> OnGet(bool? deleted, bool? sended, int calculationPage = 1, int questionPage = 1)
         {
             Sended = sended ?? false;
             Deleted = deleted ?? false;
 
-            //int pageSize = 6;
+            //Calculations = db.Calculations.AsNoTracking().ToList();
+            //Questions = db.Questions.AsNoTracking().ToList();
 
-            //IQueryable<Calculation> calculations = db.Calculations.AsNoTracking();
-            //IQueryable<Question> questions = db.Questions.AsNoTracking();
+            int pageSize = 6;
 
-            //var countCalculation = await calculations.CountAsync();
-            //var countQuestion = await questions.CountAsync();
+            IQueryable<Calculation> calculations = db.Calculations.AsNoTracking();
+            IQueryable<Question> questions = db.Questions.AsNoTracking();
 
-            //Calculations = await calculations.Skip((calculationPage - 1) * pageSize).Take(pageSize).ToListAsync();
-            //Questions = await questions.Skip((questionPage - 1) * pageSize).Take(pageSize).ToListAsync();
+            var countCalculation = await calculations.CountAsync();
+            var countQuestion = await questions.CountAsync();
 
-            //CalculationGroup = new GroupViewModel(countCalculation, calculationPage, pageSize);
-            //QuestionsGroup = new GroupViewModel(countQuestion, questionPage, pageSize);
+            Calculations = await calculations.Skip((calculationPage - 1) * pageSize).Take(pageSize).ToListAsync();
+            Questions = await questions.Skip((questionPage - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            CalculationGroup = new GroupViewModel(countCalculation, calculationPage, pageSize);
+            QuestionsGroup = new GroupViewModel(countQuestion, questionPage, pageSize);
             return Page();
         }
 
@@ -61,7 +64,7 @@ namespace FromboardDelivery.Pages
                 Console.WriteLine($"Äëÿ {calculation.Email}: {Message}");
                 Sended = true;
             }
-            return Page();
+            return RedirectToPage(routeValues: new { sended = Sended }, pageName: null, pageHandler: null, fragment: "calculation-data");
         }
 
         public async Task<IActionResult> OnPostQuestionSendAsync(Guid id)
@@ -74,7 +77,7 @@ namespace FromboardDelivery.Pages
                 Console.WriteLine($"Äëÿ {question.Email}: {Message}");
                 Sended = true;
             }
-            return RedirectToPage(new { sended = Sended, email = question?.Email });
+            return RedirectToPage(routeValues: new { sended = Sended }, pageName: "AdminPanel", pageHandler: "Get", fragment: "question-data");
         }
 
         public async Task<IActionResult> OnPostCalculationDeleteAsync(Guid id)
@@ -86,7 +89,7 @@ namespace FromboardDelivery.Pages
                 await db.SaveChangesAsync();
                 Deleted = true;
             }
-            return RedirectToPage(new { deleted = Deleted });
+            return RedirectToPage(routeValues: new { deleted = Deleted }, pageName: "AdminPanel", pageHandler: "Get", fragment: "calculation-data");
         }
 
         public async Task<IActionResult> OnPostQuestionDeleteAsync(Guid id)
@@ -98,7 +101,7 @@ namespace FromboardDelivery.Pages
                 await db.SaveChangesAsync();
                 Deleted = true;
             }
-            return RedirectToPage(new { deleted = Deleted });
+            return RedirectToPage(routeValues: new { deleted = Deleted }, pageName: "AdminPanel", pageHandler: "Get", fragment: "question-data");
         }
 
         public async Task<IActionResult> OnGetLogoutAsync()

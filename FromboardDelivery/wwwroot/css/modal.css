@@ -1,1 +1,35 @@
-﻿
+﻿.notif {
+    position: fixed;
+    top: 15%;
+    left: 85%;
+    width: 260px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #f9fafb;
+    animation: fadeOut 3s ease-in-out;
+    animation-delay: 2s;
+}
+
+.notif img {
+    width: 30px;
+}
+
+.notif h6 {
+    margin: auto 0;
+}
+
+.display-none {
+
+    display: none;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}

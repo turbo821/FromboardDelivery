@@ -3,7 +3,8 @@
 @{
     ViewData["Title"] = $"Панель администратора {HttpContext.User.Identity?.Name}";
 }
-@section Links{
+
+@section Links {
     <link href="~/css/admin.css" rel="stylesheet">
     <link href="~/css/index.css" rel="stylesheet">
     <link href="~/css/modal.css" rel="stylesheet">
@@ -30,7 +31,7 @@
                     </form >
                 </div>
 
-                <div class="row admin-data-row">
+                <div class="row admin-data-row" id="calculation-data">
                     <h2 class="admin-data-h2">Запросы на расчет доставки</h2>
                     @foreach (var calcult in Model.Calculations)
                     {
@@ -57,9 +58,10 @@
                             </form>
                     </div>
                     }
+                    <page-link asp-page="AdminPanel" asp-fragment="calculation-data" page-model="Model.CalculationGroup" page-query="calculationPage"></page-link>
                 </div>
 
-                <div class="row admin-data-row">
+                <div class="row admin-data-row" id="question-data">
                     <h2 class="admin-data-h2">Сообщения с вопросами</h2>
                         @foreach (var question in Model.Questions)
                         {
@@ -84,22 +86,8 @@
                                 </div>
                             </div>
                         }
-                    @if (Model.CalculationGroup.HasPreviousPage)
-                    {
-                        <a asp-action="Index"
-                           asp-route-calculation-page="@(Model.CalculationGroup.PageNumber - 1)" class="glyphicon glyphicon-chevron-left">
-                            Назад
-                        </a>
-                    }
-                    @if (Model.CalculationGroup.HasNextPage)
-                    {
-                        <a asp-action="Index"
-                           asp-route-calculation-page="@(Model.CalculationGroup.PageNumber + 1)" class="glyphicon glyphicon-chevron-right">
-                            Вперед
-                        </a>
-                    }
                 </div>
-
+                <page-link asp-page="AdminPanel" asp-fragment="question-data" page-model="Model.QuestionsGroup" page-query="questionPage"></page-link>
             </div>
         </section>
 
@@ -107,14 +95,17 @@
 }
 
 @section Modals {
-    @if (Model.Sended)
-    {
-        <modal id="modalS" id-label="modalCLabel" title="Ответ послан на почту ">-----------------</modal>
-    }
-    @if (Model.Deleted)
-    {
-        <modal id="modalD" id-label="modalQLabel" title="Заявка успеешно удалена">-----------------</modal>
-    }
+ 
+        <div class="notif rounded-3 display-none" id="send-notif">
+            <img src="~/img/mini-icon/green-check.png"/>
+            <h6>Ответ послан на почту</h6>
+        </div>
+
+
+        <div class="notif rounded-3 display-none" id="del-notif">
+            <img src="~/img/mini-icon/green-check.png" />
+            <h6>Заявка успешно удалена</h6>
+        </div>
 }
 
 @section Scripts{
