@@ -5,7 +5,8 @@
 }
 
 @section Links {
-    <link href="~/css/index.css" rel="stylesheet">
+    <link href="~/css/index.css" rel="stylesheet" />
+    <link href="~/css/modal.css" rel="slylesheet" />
 }
 
 @section SecretButton{
@@ -41,7 +42,7 @@
                         <div class="row row-form-p">
                             <p class="form-p">Посчитайте, сколько будет стоить перевозка покупки из зарубежа</p>
                         </div>
-                        @* <h2>@Model.Message</h2> *@
+
                         <form class="row mx-auto" method="post" asp-antiforgery="true" asp-page-handler="Calculation" id="calculationForm">
                             <div class="col-12 mb-4 abs-div">
                                 <input asp-for="Calculation.Name" class="form-control" id="inputName" placeholder="Имя" />
@@ -230,7 +231,7 @@
 @section Modals{
     @if (Model.SendCalculation)
     {
-        <modal id="modalC" id-label="modalCLabel" title="Расчет успешно заказан!">После подсчета стоимости доставки на вашу почту придет письмо с ответом</modal>
+    <modal id="modalC" id-label="modalCLabel" title="Расчет успешно заказан!">После подсчета стоимости доставки на вашу почту придет письмо с ответом</modal>
     }
     @if (Model.SendQuestion)
     {

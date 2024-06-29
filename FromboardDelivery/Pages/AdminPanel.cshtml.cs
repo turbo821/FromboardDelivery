@@ -35,9 +35,6 @@ namespace FromboardDelivery.Pages
             Sended = sended ?? false;
             Deleted = deleted ?? false;
 
-            //Calculations = db.Calculations.AsNoTracking().ToList();
-            //Questions = db.Questions.AsNoTracking().ToList();
-
             int pageSize = 6;
 
             IQueryable<Calculation> calculations = db.Calculations.AsNoTracking();
@@ -57,11 +54,12 @@ namespace FromboardDelivery.Pages
         public async Task<IActionResult> OnPostCalculationSendAsync(Guid id)
         {
             Calculation? calculation = await db.Calculations.FindAsync(id);
-            // send message in email
+            
             if (calculation != null)
             {
-               // await emailSender.SendAsync(calculation, "Расчет доставки", $"{calculation.Name} здравствуйте, мы просмотрели вашу заявку и составили расчет: {Message}");
-                Console.WriteLine($"Для {calculation.Email}: {Message}");
+                await emailSender.SendAsync(calculation, "Расчет доставки", $"Здравствуйте {calculation.Name},\nМы посмотрели вашу заявку и составили расчет: {Message}");
+                db.Calculations.Remove(calculation);
+                await db.SaveChangesAsync();
                 Sended = true;
             }
             return RedirectToPage(routeValues: new { sended = Sended }, pageName: null, pageHandler: null, fragment: "calculation-data");
@@ -73,8 +71,9 @@ namespace FromboardDelivery.Pages
             // send message in email
             if (question != null)
             {
-                //await emailSender.SendAsync(question, "Ответ на заявку", $"{question.Name} здравствуйте,\n{Message}");
-                Console.WriteLine($"Для {question.Email}: {Message}");
+                await emailSender.SendAsync(question, "Ответ на заявку", $"Здравствуйте {question.Name},\n{Message}");
+                db.Questions.Remove(question);
+                await db.SaveChangesAsync();
                 Sended = true;
             }
             return RedirectToPage(routeValues: new { sended = Sended }, pageName: "AdminPanel", pageHandler: "Get", fragment: "question-data");

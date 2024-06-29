@@ -1,17 +1,19 @@
-﻿using FromboardDelivery.Interfaces;
-using System.Net;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Mail;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+using MimeKit;
 
-namespace FromboardDelivery.Services
+namespace SendEmailApp
 {
     public class AdminEmailSender : IEmailSending
     {
-        public string FromEmail { get; set; } = "admin@gmail.com";
-        public string FromName { get; set; } = "Tom";
-        public string ToEmail { get; set; } = "customer3432@gmail.com";
-        public string EmailClient { get; set; } = "smtp.gmail.com";
+
         private NetworkCredential credential;
-        public AdminEmailSender(NetworkCredential cred) 
+        public AdminEmailSender(NetworkCredential cred)
         {
             credential = cred;
         }
@@ -28,7 +30,8 @@ namespace FromboardDelivery.Services
             client.EnableSsl = true;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
-            client.Credentials = credential;
+            client.Credentials  = credential;
+
             try
             {
                 await client.SendMailAsync(message);
@@ -38,7 +41,8 @@ namespace FromboardDelivery.Services
                 Console.WriteLine("Exception caught in CreateTestMessage2(): {0}",
                     ex.ToString());
             }
-            
+
+            Console.WriteLine("Письмо отправлено");
 
         }
     }

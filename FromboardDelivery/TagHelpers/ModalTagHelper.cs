@@ -21,7 +21,7 @@ namespace FromboardDelivery.TagHelpers
             if (Id != null && IdLabel != null)
             {
                 content = $@"
-                    <div class=""modal-dialog modal-dialog-centered"">
+                    <div class=""modal-dialog modal-dialog-centered"" >
                         <div class=""modal-content"">
                             <div class=""modal-header"">
                                 <h5 class=""modal-title"">{Title}</h5>
