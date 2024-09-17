@@ -17,6 +17,8 @@ builder.Services.AddAuthorization();
 builder.Services.AddDbContext<DeliveryContext>(options => options.UseSqlite(connection));
 builder.Services.AddSingleton<IEmailSending>(new AdminEmailSender(new System.Net.NetworkCredential(email, code)));
 
+builder.Services.Configure<AdminCredentials>(builder.Configuration.GetSection("AdminCredentials"));
+
 var app = builder.Build();
 
 app.UseAuthentication();

@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using System;
 using Microsoft.AspNetCore.Authentication;
+using FromboardDelivery.Extensions;
 
 namespace FromboardDelivery.Pages
 {
@@ -26,7 +27,7 @@ namespace FromboardDelivery.Pages
 
         public async Task<IActionResult> OnPostAsync(string? returnUrl)
         {
-            Admin? admin = await db.Admins.FirstOrDefaultAsync(m => m.Email == Admin.Email && m.Password == Admin.Password);
+            Admin? admin = await db.Admins.FirstOrDefaultAsync(m => m.Email == Admin.Email && m.Password == Admin.Password.Encrypt());
             if (admin is null)
             {
                 Message = $"Почта или пароль неверны";
